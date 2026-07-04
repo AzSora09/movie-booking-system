@@ -1,5 +1,6 @@
 <?php
 include("./required.php");
+// Show registration page and process registration submissions
 register();
 ?>
 <!doctype html>

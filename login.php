@@ -1,5 +1,6 @@
 <?php
 include("./required.php");
+// Display login form and process login submission via required.php helper
 ?>
 <!doctype html>
 <html lang="en">
@@ -44,6 +45,7 @@ include("./required.php");
                 </span>
             </form>
             <?php
+            // Process login form submission and save session data on success
             login();
             ?>
         </div>

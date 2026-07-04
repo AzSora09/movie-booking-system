@@ -1,6 +1,10 @@
 <?php
 include("./adminrequired.php");
-include("./logics/cinemas.php")
+// Load shared admin utilities and movie data helpers
+include("./logics/movies.php");
+if (isset($_GET["delete-id"])) {
+    deletedata("movies", $_GET["delete-id"]);
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -41,26 +45,27 @@ include("./logics/cinemas.php")
                     <tbody>
 
                         <?php
+                        // Fetch all movies and render each row in the table
                         $result = selectdata("movies");
                         while ($row = mysqli_fetch_assoc($result)) {
                         ?>
                             <tr>
-                                <td scope="row"><?php echo $row["id"]?></td>
-                                <td><?php echo $row["title"]?></td>
-                                <td><?php echo $row["description"]?></td>
-                                <td><?php echo $row["genre"]?></td>
-                                <td><?php echo $row["duration"]?></td>
-                                <td><?php echo $row["language"]?></td>
-                                <td><?php echo $row["age_rating"]?></td>
+                                <td scope="row"><?php echo $row["id"] ?></td>
+                                <td><?php echo $row["title"] ?></td>
+                                <td><?php echo $row["description"] ?></td>
+                                <td><?php echo $row["genre"] ?></td>
+                                <td><?php echo $row["duration"] ?></td>
+                                <td><?php echo $row["language"] ?></td>
+                                <td><?php echo $row["age_rating"] ?></td>
                                 <td>
-                                    <img src="../images/<?php echo $row["poster"]?>" alt="" class="img-fluid">
+                                    <img src="../images/<?php echo $row["poster"] ?>" alt="" class="img-fluid">
                                 </td>
                                 <td>
-                                    <iframe src="https://www.youtube.com/embed/<?php echo $row["trailer"]?>" frameborder="0" allowfullscreen></iframe>
+                                    <iframe src="https://www.youtube.com/embed/<?php echo $row["trailer"] ?>" frameborder="0" allowfullscreen></iframe>
                                 </td>
                                 <td>
-                                    <a class="btn btn-success" href="./edit-movie.php">Edit</a>
-                                    <a class="btn btn-danger" href="?delete-id=<?php echo $row["id"]?>">Delete</a>
+                                    <a class="btn btn-success" href="./edit-movie.php?id=<?php echo $row["id"] ?>">Edit</a>
+                                    <a class="btn btn-danger" href="?delete-id=<?php echo $row["id"] ?>">Delete</a>
                                 </td>
                             </tr>
 

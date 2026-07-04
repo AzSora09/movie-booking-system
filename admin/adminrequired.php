@@ -1,11 +1,20 @@
 <?php
+// Start the session on all admin pages for authentication and user tracking
 session_start();
 
+// Database connection shared by all admin pages
 $conn = mysqli_connect('localhost', 'root', '', 'movie-booking-system');
 
+// Helper to show a browser alert with the given message
 function alertjs($content)
 {
     echo "<script> alert(" . json_encode($content) . ") </script>";
+}
+
+function redirect($url)
+{
+    echo "<script> window.location.href = " . json_encode($url) . " </script>";
+    exit;
 }
 
 function head($title)
@@ -25,6 +34,7 @@ function head($title)
 ?>
 
 <?php
+// Render the admin navigation bar used across admin pages
 function navbar()
 { ?>
     <header>
@@ -136,6 +146,7 @@ function navbar()
 <?php
 function imgverif($file, $prefix)
 {
+    // Validate uploaded image type and move it to the shared images folder
     $imgtmp = $file["tmp_name"];
     $imgname = $file["name"];
 
@@ -165,14 +176,14 @@ function youtubeID($input)
 {
     $input = trim($input);
 
-    // If it's already a YouTube video ID
+    // If the input is already a valid YouTube video ID, return it unchanged
     if (preg_match('/^[A-Za-z0-9_-]{11}$/', $input)) {
         return $input;
     }
 
     $parts = parse_url($input);
 
-    // Normal YouTube link
+    // Normal YouTube link with v= parameter
     if (isset($parts["query"])) {
         parse_str($parts["query"], $query);
 
@@ -181,7 +192,7 @@ function youtubeID($input)
         }
     }
 
-    // Short youtu.be link
+    // Short youtu.be link format
     if (isset($parts["host"]) && $parts["host"] == "youtu.be") {
         return ltrim($parts["path"], "/");
     }
@@ -194,6 +205,9 @@ function selectdata($table, $id = null)
 {
     global $conn;
 
+    // Fetch all rows from a table or a single row when ID is provided
+    global $conn;
+
     if ($id !== null) {
         $result = mysqli_query($conn, "Select * from $table where id = $id");
     } else {
@@ -201,5 +215,13 @@ function selectdata($table, $id = null)
     }
 
     return $result;
+}
+
+function deletedata($table, $id)
+{
+    global $conn;
+
+    // Delete a row from a table based on the provided ID
+        mysqli_query($conn, "Delete from $table where id = $id");
 }
 ?>

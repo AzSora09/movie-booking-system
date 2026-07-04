@@ -1,6 +1,10 @@
 <?php
 include("./adminrequired.php");
-include("./logics/cinemas.php")
+// Load shared admin utilities and cinema data helpers
+include("./logics/cinemas.php");
+if(isset($_GET["delete-id"])) {
+    deletedata("cinemas", $_GET["delete-id"]);
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -35,6 +39,7 @@ include("./logics/cinemas.php")
                     <tbody>
 
                         <?php
+                        // Fetch all cinemas and render the table rows
                         $result = selectdata("cinemas");
                         while ($row = mysqli_fetch_assoc($result)) {
                         ?>
@@ -43,7 +48,7 @@ include("./logics/cinemas.php")
                                 <td><?php echo $row["name"]?></td>
                                 <td><?php echo $row["location"]?></td>
                                 <td>
-                                    <a class="btn btn-success" href="./edit-cinema.php">Edit</a>
+                                    <a class="btn btn-success" href="./edit-cinema.php?id=<?php echo $row["id"]?>">Edit</a>
                                     <a class="btn btn-danger" href="?delete-id=<?php echo $row["id"]?>">Delete</a>
                                 </td>
                             </tr>

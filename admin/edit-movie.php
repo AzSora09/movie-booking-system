@@ -1,7 +1,7 @@
 <?php
 include("./adminrequired.php");
 // Load movie-related helper functions for adding movies
-include("./logics/movies.php")
+include("./logics/movies.php");
 ?>
 <!doctype html>
 <html lang="en">
@@ -20,7 +20,11 @@ include("./logics/movies.php")
 
     <main>
         <div class="container mt-5">
-            <h2>Add Movie</h2>
+            <h2>Edit Movie</h2>
+            <?php
+            $result = selectdata("movies", $_GET["id"]);
+            $row = mysqli_fetch_assoc($result);
+            ?>
             <form action="" method="post" enctype="multipart/form-data">
 
                 <div class="mb-3">
@@ -28,7 +32,7 @@ include("./logics/movies.php")
                     <input
                         type="text"
                         name="name"
-                        id=""
+                        value="<?php echo $row["title"]; ?>"
                         class="form-control"
                         placeholder=""
                         aria-describedby="helpId" />
@@ -39,12 +43,11 @@ include("./logics/movies.php")
                     <textarea
                         type="text"
                         name="desc"
-                        id=""
                         class="form-control"
                         rows="6"
                         maxlength="2000"
                         placeholder=""
-                        aria-describedby="helpId"></textarea>
+                        aria-describedby="helpId"><?php echo $row["description"]; ?></textarea>
                 </div>
 
                 <div class="mb-3">
@@ -52,7 +55,7 @@ include("./logics/movies.php")
                     <input
                         type="text"
                         name="genre"
-                        id=""
+                        value="<?php echo $row["genre"]; ?>"
                         class="form-control"
                         placeholder=""
                         aria-describedby="helpId" />
@@ -64,7 +67,7 @@ include("./logics/movies.php")
                         <input
                             type="number"
                             name="dur_hr"
-                            id=""
+                            value="<?php echo explode(' ', $row["duration"])[0]; ?>"
                             class="form-control d-inline"
                             style="width: 3vw"
                             placeholder=""
@@ -73,7 +76,7 @@ include("./logics/movies.php")
                         <input
                             type="number"
                             name="dur_min"
-                            id=""
+                            value="<?php echo explode(' ', $row["duration"])[2]; ?>"
                             class="form-control d-inline"
                             style="width: 3vw"
                             placeholder=""
@@ -87,7 +90,7 @@ include("./logics/movies.php")
                     <input
                         type="text"
                         name="lang"
-                        id=""
+                        value="<?php echo $row["language"]; ?>"
                         class="form-control"
                         placeholder=""
                         aria-describedby="helpId" />
@@ -98,6 +101,7 @@ include("./logics/movies.php")
                     <input
                         type="text"
                         name="age"
+                        value="<?php echo $row["age_rating"]; ?>"
                         id=""
                         class="form-control"
                         placeholder=""
@@ -120,7 +124,7 @@ include("./logics/movies.php")
                     <input
                         type="text"
                         name="trailer"
-                        id=""
+                        value="https://www.youtube.com/watch?v=<?php echo $row["trailer"]; ?>"
                         class="form-control"
                         placeholder=""
                         aria-describedby="helpId" />
@@ -134,7 +138,7 @@ include("./logics/movies.php")
                 </button>
             </form>
             <?php
-                addmovie();
+                editmovie($_GET["id"]);
             ?>
         </div>
     </main>

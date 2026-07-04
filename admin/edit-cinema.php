@@ -20,7 +20,11 @@ include("./logics/cinemas.php");
 
     <main>
         <div class="container mt-5">
-            <h2>Add Cinema</h2>
+            <h2>Edit Cinema</h2>
+            <?php
+                $result = selectdata("cinemas", $_GET["id"]);
+                $row = mysqli_fetch_assoc($result);
+            ?>
             <form action="" method="post">
 
                 <div class="mb-3">
@@ -28,7 +32,7 @@ include("./logics/cinemas.php");
                     <input
                         type="text"
                         name="name"
-                        id=""
+                        value="<?php echo $row["name"]?>"
                         class="form-control"
                         placeholder=""
                         aria-describedby="helpId" />
@@ -39,12 +43,11 @@ include("./logics/cinemas.php");
                     <textarea
                         type="text"
                         name="location"
-                        id=""
                         class="form-control"
                         rows="2"
                         maxlength="255"
                         placeholder=""
-                        aria-describedby="helpId"></textarea>
+                        aria-describedby="helpId"><?php echo $row["location"]?></textarea>
                 </div>
 
                 <button
@@ -55,7 +58,7 @@ include("./logics/cinemas.php");
                 </button>
             </form>
             <?php
-                addcinema();
+                editcinema($_GET["id"]);
             ?>
         </div>
     </main>

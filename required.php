@@ -1,8 +1,11 @@
 <?php
+// Start session support for user login and role tracking
 session_start();
 
+// Create a reusable database connection for the application
 $conn = mysqli_connect('localhost', 'root', '', 'movie-booking-system');
 
+// Display a JavaScript alert message in the browser
 function alertjs($content){
     echo "<script> alert(" . json_encode($content) . ") </script>";
 }
@@ -46,6 +49,7 @@ function navbar()
                 <div class="d-flex">
                     <ul class="navbar-nav me-auto mt-2 mt-lg-0 order-first order-md-last">
                         <?php
+                        // Show current user name when logged in
                         if (
                             isset($_SESSION["user_name"])
                         ) {
@@ -82,6 +86,7 @@ function navbar()
                             if (
                                 isset($_SESSION["user_name"])
                             ) {
+                                // Intended to show admin link only to admin users
                                 if ($_SESSION["user_role"] = "admin") { ?>
                                     <li class="nav-item">
                                         <a class="nav-link" href="./admin/index.php">Admin</a>
@@ -117,11 +122,14 @@ function register()
 {
     if (isset($_POST['submit'])) {
         global $conn;
+
+        // Collect user input from registration form
         $f_name = $_POST['f-name'];
         $l_name = $_POST['l-name'];
         $email = $_POST['email'];
         $pass = password_hash($_POST['pass'], PASSWORD_DEFAULT);
 
+        // Insert a new user account into the database
         if (
             mysqli_query($conn, "insert into accounts (`first_name`, `last_name`, `email`, `password`, `role`) values('$f_name', '$l_name', '$email', '$pass', 'user')")
         ) {
@@ -135,6 +143,8 @@ function login()
 {
     if (isset($_POST['submit'])) {
         global $conn;
+
+        // Collect login credentials from the form
         $email = $_POST["email"];
         $pass = $_POST["pass"];
         $query = mysqli_query($conn, "select * from accounts where email='$email'");
@@ -144,6 +154,7 @@ function login()
         ) {
             $col = mysqli_fetch_array($query);
 
+            // Verify the submitted password against the stored hash
             if (
                 password_verify($pass, $col['password'])
             ) {
