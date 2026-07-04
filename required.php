@@ -2,6 +2,12 @@
 session_start();
 
 $conn = mysqli_connect('localhost', 'root', '', 'movie-booking-system');
+
+function alertjs($content){
+    echo "<script> alert(" . json_encode($content) . ") </script>";
+}
+
+
 function head($title)
 {
 ?>
@@ -146,14 +152,10 @@ function login()
                 header("Location: ./index.php");
                 exit;
             } else {
-                echo "<script>alert('Password Incorrect')</script>";
-                // header("Location: ./login.php");
-                // exit;
+                alertjs('Password Incorrect');
             }
         } else {
-            echo "<script>alert('Account not found')</script>";
-            // header("Location: ./login.php");
-            // exit;
+            alertjs('Account not found');
         }
     }
 }
