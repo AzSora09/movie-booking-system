@@ -8,7 +8,7 @@ include("./logics/movies.php")
 
 <head>
     <?php
-    head("Movie Booking System");
+    head("Add Movie");
     ?>
 </head>
 

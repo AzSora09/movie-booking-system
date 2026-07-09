@@ -11,7 +11,7 @@ if(isset($_GET["delete-id"])) {
 
 <head>
     <?php
-    head("Movie Booking System");
+    head("View Cinemas");
     ?>
 </head>
 

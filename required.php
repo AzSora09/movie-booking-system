@@ -31,91 +31,119 @@ function head($title)
 function navbar()
 { ?>
     <header>
-        <nav
-            class="navbar navbar-expand-sm navbar-light bg-danger">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
             <div class="container">
-                <a class="navbar-brand" href="./index.php">ShowRadar</a>
+
+                <a class="navbar-brand fw-bold" href="./index.php">
+                    ShowRadar
+                </a>
+
                 <button
-                    class="navbar-toggler d-lg-none order-first"
+                    class="navbar-toggler"
                     type="button"
                     data-bs-toggle="collapse"
-                    data-bs-target="#collapsibleNavId"
-                    aria-controls="collapsibleNavId"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation">
+                    data-bs-target="#collapsibleNavId">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="d-flex">
-                    <ul class="navbar-nav me-auto mt-2 mt-lg-0 order-first order-md-last">
-                        <?php
-                        // Show current user name when logged in
-                        if (
-                            isset($_SESSION["user_name"])
-                        ) {
-                        ?>
+                <div class="collapse navbar-collapse" id="collapsibleNavId">
+
+                    <ul class="navbar-nav me-auto">
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="./index.php">Home</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="./movies.php">Movies</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="./cinemas.php">Cinemas</a>
+                        </li>
+
+                        <?php if (isset($_SESSION["user_role"]) && $_SESSION["user_role"] === "admin") { ?>
                             <li class="nav-item">
-                                <span class="nav-link">
-                                    <?php echo $_SESSION["user_name"]; ?>
-                                </span>
-                            </li>
-                        <?php } else {
-                        ?>
-                            <li class="nav-item">
-                                <a class="nav-link" href="./login.php" aria-current="page">Log In</a>
-                            </li>
-                            <li class="nav-item d-none d-md-block">
-                                <a class="nav-link" href="./register.php">Sign In</a>
+                                <a class="nav-link" href="./admin/index.php">Admin</a>
                             </li>
                         <?php } ?>
 
                     </ul>
 
-                    <div class="collapse navbar-collapse" id="collapsibleNavId">
-                        <ul class="navbar-nav me-auto mt-2 mt-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link" href="./index.php" aria-current="page">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Movies</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Cinemas</a>
-                            </li>
-                            <?php
-                            if (
-                                isset($_SESSION["user_name"])
-                            ) {
-                                // Intended to show admin link only to admin users
-                                if ($_SESSION["user_role"] = "admin") { ?>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="./admin/index.php">Admin</a>
-                                    </li>
-                            <?php }
-                            }
-                            ?>
+                    <form class="d-flex me-3">
+                        <input
+                            class="form-control me-2"
+                            type="search"
+                            placeholder="Search">
 
+                        <button
+                            class="btn btn-outline-light"
+                            type="submit">
+                            Search
+                        </button>
+                    </form>
 
-                        </ul>
+                    <ul class="navbar-nav">
 
-                        <form class="d-flex my-2 my-lg-0">
-                            <input
-                                class="form-control me-sm-2"
-                                type="text"
-                                placeholder="Search" />
-                            <button
-                                class="btn btn-outline-light my-2 my-sm-0"
-                                type="submit">
-                                Search
-                            </button>
-                        </form>
-                    </div>
+                        <?php if (isset($_SESSION["user_name"])) { ?>
+
+                            <li class="nav-item dropdown">
+
+                                <a
+                                    class="nav-link dropdown-toggle"
+                                    href="#"
+                                    data-bs-toggle="dropdown">
+
+                                    <?= $_SESSION["user_name"]; ?>
+
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-end">
+
+                                    <a class="dropdown-item" href="./profile.php">
+                                        Profile
+                                    </a>
+
+                                    <a class="dropdown-item" href="./my-bookings.php">
+                                        My Bookings
+                                    </a>
+
+                                    <div class="dropdown-divider"></div>
+
+                                    <a
+                                        class="dropdown-item text-danger"
+                                        href="./logout.php">
+                                        Log Out
+                                    </a>
+
+                                </div>
+
+                            </li>
+
+                        <?php } else { ?>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="./login.php">
+                                    Log In
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="./register.php">
+                                    Register
+                                </a>
+                            </li>
+
+                        <?php } ?>
+
+                    </ul>
+
                 </div>
+
             </div>
         </nav>
     </header>
-<?php }
-?>
+<?php } ?>
 
 <?php
 function register()
