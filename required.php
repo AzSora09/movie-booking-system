@@ -6,8 +6,15 @@ session_start();
 $conn = mysqli_connect('localhost', 'root', '', 'movie-booking-system');
 
 // Display a JavaScript alert message in the browser
-function alertjs($content){
+function alertjs($content)
+{
     echo "<script> alert(" . json_encode($content) . ") </script>";
+}
+
+function redirect($url)
+{
+    echo "<script> window.location.href = " . json_encode($url) . " </script>";
+    exit;
 }
 
 
@@ -70,11 +77,12 @@ function navbar()
 
                     </ul>
 
-                    <form class="d-flex me-3">
+                    <form class="d-flex me-3" method="GET" action="./movies.php">
                         <input
                             class="form-control me-2"
                             type="search"
-                            placeholder="Search">
+                            name="search"
+                            placeholder="Search Movies">
 
                         <button
                             class="btn btn-outline-light"
@@ -82,6 +90,9 @@ function navbar()
                             Search
                         </button>
                     </form>
+                    <?php
+
+                    ?>
 
                     <ul class="navbar-nav">
 
@@ -143,9 +154,52 @@ function navbar()
             </div>
         </nav>
     </header>
-<?php } ?>
+<?php }
+
+function footer()
+{ ?>
+    <footer class="bg-dark text-light mt-5 py-4 position-relative bottom-0 w-100">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-4 mb-3">
+                    <h5>ShowRadar</h5>
+                    <p class="mb-0">
+                        Your one-stop destination for browsing movies, cinemas, and booking tickets online.
+                    </p>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="./index.php" class="text-light text-decoration-none">Home</a></li>
+                        <li><a href="./movies.php" class="text-light text-decoration-none">Movies</a></li>
+                        <li><a href="./cinemas.php" class="text-light text-decoration-none">Cinemas</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <h5>Account</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="./login.php" class="text-light text-decoration-none">Log In</a></li>
+                        <li><a href="./register.php" class="text-light text-decoration-none">Register</a></li>
+                        <li><a href="./my-bookings.php" class="text-light text-decoration-none">My Bookings</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <hr class="border-secondary">
+
+            <div class="text-center">
+                &copy; <?php echo date("Y"); ?> ShowRadar. All rights reserved.
+            </div>
+        </div>
+    </footer>
 
 <?php
+}
+
 function register()
 {
     if (isset($_POST['submit'])) {
@@ -197,5 +251,39 @@ function login()
             alertjs('Account not found');
         }
     }
+}
+
+function selectdata($table, $id = null)
+{
+    // Fetch all rows from a table or a single row when ID is provided
+    global $conn;
+
+    if ($id !== null) {
+        $result = mysqli_query($conn, "Select * from $table where id = $id");
+    } else {
+        $result = mysqli_query($conn, "Select * from $table");
+    }
+
+    return $result;
+}
+
+function getvalue($table, $column, $id)
+{
+    global $conn;
+
+    $query = mysqli_query($conn, "SELECT $column FROM $table WHERE id = $id");
+    $row = mysqli_fetch_assoc($query);
+
+    return $row[$column];
+}
+
+function countdata($table)
+{
+    global $conn;
+
+    $query = mysqli_query($conn, "SELECT COUNT(*) AS total FROM $table");
+    $row = mysqli_fetch_assoc($query);
+
+    return $row["total"];
 }
 ?>

@@ -1,0 +1,61 @@
+.review-card {
+
+    max-width: 600px;
+
+}
+
+
+
+.rating {
+
+    display: flex;
+
+    flex-direction: row-reverse;
+
+    justify-content: flex-end;
+
+}
+
+
+
+.rating input {
+
+    display: none;
+
+}
+
+
+
+.rating label {
+
+    font-size: 40px;
+
+    color: #ccc;
+
+    cursor: pointer;
+
+}
+
+
+
+.rating input:checked ~ label {
+
+    color: gold;
+
+}
+
+
+
+.rating label:hover,
+.rating label:hover ~ label {
+
+    color: gold;
+
+}
+
+.review-stars {
+
+    color: gold;
+    font-size: 20px;
+
+}
