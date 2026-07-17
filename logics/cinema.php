@@ -1,9 +1,13 @@
 <?php
+
 global $conn;
 
-// Validate cinema id parameter; redirect to list when missing
+
+// Check if cinema id is provided
 if (!isset($_GET["id"])) {
+
     redirect("./cinemas.php");
+
 }
 
 
@@ -11,11 +15,16 @@ $cinema_id = $_GET["id"];
 
 
 
+
+// Fetch cinema details
 $cinema_query = selectdata("cinemas", $cinema_id);
 
 
+
 if (mysqli_num_rows($cinema_query) == 0) {
+
     redirect("./cinemas.php");
+
 }
 
 
@@ -23,7 +32,9 @@ $cinema = mysqli_fetch_assoc($cinema_query);
 
 
 
-// Fetch schedules for this cinema (grouped by movie then date/time)
+
+
+// Fetch schedules available for this cinema
 $schedule_query = mysqli_query(
     $conn,
     "SELECT *
@@ -31,5 +42,6 @@ $schedule_query = mysqli_query(
      WHERE cinema_id = $cinema_id
      ORDER BY movie_id, date, time"
 );
+
 
 ?>

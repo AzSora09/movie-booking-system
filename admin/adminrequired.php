@@ -1,5 +1,5 @@
 <?php
-// Start the session on all admin pages for authentication and user tracking
+// Start the session on all admin pages
 session_start();
 
 // Database connection shared by all admin pages
@@ -10,29 +10,30 @@ if (!isset($_SESSION["user_name"])) {
 
     alertjs("Please log in to access the admin panel.");
     redirect("../login.php");
-
 }
 
-elseif ($_SESSION["user_role"] !== "admin") {
+// Redirect to the main website if the user is not an admin
+if ($_SESSION["user_role"] !== "admin") {
 
     alertjs("Only administrators are allowed to access this page.");
     redirect("../index.php");
-
 }
 
 
-// Helper to show a browser alert with the given message
+// PHP function to use JavaScript alert to not write the js code again and again
 function alertjs($content)
 {
     echo "<script> alert(" . json_encode($content) . ") </script>";
 }
 
+// PHP function to redirect to a different page using JavaScript
 function redirect($url)
 {
     echo "<script> window.location.href = " . json_encode($url) . " </script>";
     exit;
 }
 
+// PHP function to include the head section of the HTML document with a dynamic title given as parameter
 function head($title)
 {
 ?>
@@ -50,6 +51,7 @@ function head($title)
 ?>
 
 <?php
+// PHP function to use navbar for admin pages
 function navbar()
 { ?>
     <header>
@@ -159,6 +161,8 @@ function navbar()
 
 
 <?php
+
+// Function to verify image uploads, ensuring they are valid image files and moving them to the shared images folder
 function imgverif($file, $prefix)
 {
     // Validate uploaded image type and move it to the shared images folder
@@ -187,6 +191,8 @@ function imgverif($file, $prefix)
     return false;
 }
 
+// Function to get video ID from YouTube link, supporting both standard and shortened URL formats.
+// Will do nothing if admin input is already appropriate video ID
 function youtubeID($input)
 {
     $input = trim($input);
@@ -215,7 +221,7 @@ function youtubeID($input)
     return false;
 }
 
-
+// Function to select data from MySQL database, either all rows or a specific row by ID
 function selectdata($table, $id = null)
 {
     // Fetch all rows from a table or a single row when ID is provided
@@ -230,14 +236,16 @@ function selectdata($table, $id = null)
     return $result;
 }
 
+// Function to delete a row from a MySQL database table based on the provided ID
 function deletedata($table, $id)
 {
     global $conn;
 
     // Delete a row from a table based on the provided ID
-        mysqli_query($conn, "Delete from $table where id = $id");
+    mysqli_query($conn, "Delete from $table where id = $id");
 }
 
+// Function to get a specific column value from a MySQL database table based on the provided ID
 function getvalue($table, $column, $id)
 {
     global $conn;
@@ -248,6 +256,7 @@ function getvalue($table, $column, $id)
     return $row[$column];
 }
 
+// Function to count the total number of rows in a MySQL database table
 function countdata($table)
 {
     global $conn;

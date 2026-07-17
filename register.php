@@ -1,6 +1,5 @@
 <?php
 include("./required.php");
-// Registration page — uses shared setup and runs register helper
 register();
 ?>
 <!doctype html>

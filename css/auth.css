@@ -1,35 +1,41 @@
-/* Auth styles — simple styles for login/register pages */
+/* Styles for login and registration pages */
 
-.auth-body{
+.auth-body {
 
-    background:#f5f5f5;
-
-}
-
-.auth-card{
-
-    max-width:450px;
-
-    margin:80px auto;
-
-    background:white;
-
-    padding:40px;
-
-    border-radius:15px;
+    background: #f5f5f5;
 
 }
 
-.auth-card h2{
 
-    font-weight:700;
+/* Main card containing authentication form */
+.auth-card {
+
+    max-width: 450px;
+
+    margin: 80px auto;
+
+    background: white;
+
+    padding: 40px;
+
+    border-radius: 15px;
 
 }
 
-.auth-card .btn{
 
-    padding:10px;
+/* Style page heading inside authentication card */
+.auth-card h2 {
 
-    font-size:18px;
+    font-weight: 700;
+
+}
+
+
+/* Adjust authentication button size */
+.auth-card .btn {
+
+    padding: 10px;
+
+    font-size: 18px;
 
 }

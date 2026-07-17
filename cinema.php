@@ -1,6 +1,5 @@
 <?php
 include("./required.php");
-// Cinema page — uses shared setup and loads cinema schedules
 include("./logics/cinema.php");
 ?>
 <!doctype html>

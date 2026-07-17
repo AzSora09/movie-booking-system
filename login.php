@@ -1,7 +1,7 @@
 <?php
 include("./required.php");
 ?>
-<?php // Login page — uses shared setup (DB/session) ?>
+<?php // Login page for existing users to enter email and password ?>
 <!doctype html>
 <html lang="en">
 

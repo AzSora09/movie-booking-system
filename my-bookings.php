@@ -1,6 +1,5 @@
 <?php
 include("./required.php");
-// My bookings page — loads shared setup and user's bookings
 include("./logics/my-bookings.php");
 ?>
 <!doctype html>

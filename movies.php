@@ -1,6 +1,5 @@
 <?php
 include("./required.php");
-// Movies listing page — loads shared setup and shows available movies
 ?>
 <!doctype html>
 <html lang="en">

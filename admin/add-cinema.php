@@ -9,7 +9,7 @@ include("./logics/cinemas.php");
 
 <head>
     <?php
-    // Use the shared head function to set the page title and include required assets
+    // Use head function to add title and required assets for the page
     head("Add Cinema");
     ?>
 </head>
@@ -21,14 +21,14 @@ include("./logics/cinemas.php");
     ?>
 
 
-    // Start of the main content
+    <!-- Start of the main content -->
     <main>
         <div class="container mt-5">
             <h2>Add Cinema</h2>
 
-            // Start of the form to add a new cinema
+            <!-- Start of the form to add a new cinema -->
             <form action="" method="post">
-
+                <!-- Input field for cinema name -->
                 <div class="mb-3">
                     <label for="" class="form-label">Cinema Name</label>
                     <input
@@ -40,6 +40,7 @@ include("./logics/cinemas.php");
                         aria-describedby="helpId" />
                 </div>
 
+                <!-- Input field for cinema location -->
                 <div class="mb-3">
                     <label for="" class="form-label">Cinema Location</label>
                     <textarea
@@ -53,6 +54,7 @@ include("./logics/cinemas.php");
                         aria-describedby="helpId"></textarea>
                 </div>
 
+                <!-- Submit button to add cinema -->
                 <button
                     type="submit"
                     name="submit"
@@ -66,11 +68,6 @@ include("./logics/cinemas.php");
             ?>
         </div>
     </main>
-
-
-    <footer>
-
-    </footer>
 
     <!-- Bootstrap JS -->
     <script src="../bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>

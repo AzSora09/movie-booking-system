@@ -1,6 +1,7 @@
 <?php
+// Import shared functions and database connection for admin pages
 include("./adminrequired.php");
-// Admin dashboard entry page. Shared admin layout utilities are loaded from adminrequired.php.
+
 global $conn;
 ?>
 <!doctype html>
@@ -8,24 +9,25 @@ global $conn;
 
 <head>
     <?php
+    // Use head function to add title and required assets for the page
     head("Movie Booking System - Admin Dashboard");
     ?>
 </head>
 
 <body>
     <?php
-    // Render the admin navigation bar at the top of the page
+    // Navbar
     navbar();
     ?>
 
-
+    <!-- Start of the main content -->
     <main>
+
         <div class="container mt-4">
 
             <h2 class="mb-4">Dashboard</h2>
 
-            <!-- Statistics -->
-            <!-- Summary cards showing how many records exist -->
+            <!-- Display dashboard statistics -->
             <div class="row g-3 mb-5">
 
                 <div class="col-md-4 col-lg-2">
@@ -84,10 +86,10 @@ global $conn;
 
             </div>
 
-            <!-- Quick Actions -->
+
+            <!-- Display quick action buttons -->
             <h4 class="mb-3">Quick Actions</h4>
 
-            <!-- Quick links to the main admin actions -->
             <div class="d-flex gap-3 flex-wrap">
 
                 <a href="add-movie.php" class="btn btn-primary">
@@ -104,20 +106,24 @@ global $conn;
 
             </div>
 
+
             <div class="row mt-5">
 
-                <!-- Latest Movies -->
+                <!-- Display recently added movies -->
                 <div class="col-md-6 mb-4">
+
                     <div class="card shadow-sm">
+
                         <div class="card-header">
                             Latest Movies
                         </div>
+
                         <div class="card-body">
 
                             <ul class="list-group list-group-flush">
 
                                 <?php
-                                // Show the latest added movies on the dashboard
+                                // Fetch the latest movies from the database
                                 $movies = mysqli_query($conn, "SELECT title FROM movies ORDER BY id DESC LIMIT 5");
 
                                 while ($movie = mysqli_fetch_assoc($movies)) {
@@ -132,54 +138,72 @@ global $conn;
                             </ul>
 
                         </div>
+
                     </div>
+
                 </div>
 
-                <!-- Latest Reviews -->
+
+                <!-- Display recent reviews -->
                 <div class="col-md-6 mb-4">
+
                     <div class="card shadow-sm">
+
                         <div class="card-header">
                             Latest Reviews
                         </div>
+
                         <div class="card-body">
 
                             <ul class="list-group list-group-flush">
 
                                 <?php
-                                // Show the latest reviews on the dashboard
+                                // Fetch the latest reviews from the database
                                 $reviews = mysqli_query($conn, "SELECT * FROM reviews ORDER BY id DESC LIMIT 5");
 
                                 if (mysqli_num_rows($reviews) === 0) {
+
                                     echo '<li class="list-group-item">No reviews yet.</li>';
+
                                 } else {
+
                                     while ($review = mysqli_fetch_assoc($reviews)) {
                                 ?>
 
                                         <li class="list-group-item">
+
                                             <strong><?= getValue("accounts", "first_name", $review["user_id"]) ?></strong>
+
                                             reviewed
+
                                             <strong><?= getValue("movies", "title", $review["movie_id"]) ?></strong>
+
                                             (<?= $review["rating"] ?>/5)
+
                                         </li>
 
-                                <?php }
-                                } ?>
+                                <?php
+                                    }
+                                }
+                                ?>
 
                             </ul>
 
                         </div>
+
                     </div>
+
                 </div>
 
             </div>
 
         </div>
+
     </main>
-
-
 
     <!-- Bootstrap JS -->
     <script src="../bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
+
 </body>
 
 </html>

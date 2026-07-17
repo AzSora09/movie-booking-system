@@ -1,16 +1,17 @@
 <?php
-// Starts session and sets up DB connection for the application
+// Start session to track user login and maintain state across pages
 session_start();
 
-// Create a reusable database connection for the application
+// Connect to the database for all pages that include this file
 $conn = mysqli_connect('localhost', 'root', '', 'movie-booking-system');
 
-// Display a JavaScript alert message in the browser
+// Function alertjs: Display a JavaScript alert dialog with a message
 function alertjs($content)
 {
     echo "<script> alert(" . json_encode($content) . ") </script>";
 }
 
+// Function redirect: Use JavaScript to send user to a different page
 function redirect($url)
 {
     echo "<script> window.location.href = " . json_encode($url) . " </script>";
@@ -18,6 +19,7 @@ function redirect($url)
 }
 
 
+// Function head: Output the HTML head section with page title and CSS/JS links
 function head($title)
 {
 ?>
@@ -35,6 +37,7 @@ function head($title)
 ?>
 
 <?php
+// Function navbar: Display the top navigation bar with menu items and user dropdown
 function navbar()
 { ?>
     <header>

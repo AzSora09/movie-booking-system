@@ -1,6 +1,5 @@
 <?php
 include("./required.php");
-// Movie details page — loads shared setup and movie logic
 include("./logics/movie.php");
 ?>
 <!doctype html>

@@ -1,9 +1,11 @@
-// Simple helper: calculate total price based on class and concessions
+/* Calculate total booking price based on seat class and children concession */
 function calculateTotal() {
 
-    // Read selected class and ticket counts from the form
+    // Get selected seat class
     let classType = document.getElementById("class_type").value;
 
+
+    // Get ticket amounts entered by user
     let amount = Number(
         document.getElementById("tkt_amount").value
     );
@@ -13,32 +15,40 @@ function calculateTotal() {
     );
 
 
-    // Guard: children cannot exceed total tickets
+    // Prevent children count from exceeding total tickets
     if (children > amount) {
+
         children = amount;
+
         document.getElementById("children_amount").value = amount;
+
     }
 
 
-    // Compute totals
+    // Calculate adult tickets after removing children tickets
     let adultTickets = amount - children;
 
 
+    // Get price based on selected ticket class
     let ticketPrice = prices[classType];
 
 
-    let childPrice = ticketPrice / 2; // 50% concession
+    // Apply 50% concession for children tickets
+    let childPrice = ticketPrice / 2;
 
 
+    // Calculate total ticket price
     let total =
         (adultTickets * ticketPrice) +
         (children * childPrice);
 
 
-    // Update UI with formatted price
+    // Display updated ticket total
     document.getElementById("total_price").innerHTML =
         "Rs. " + total;
 
 }
 
+
+// Calculate price when page loads
 calculateTotal();

@@ -1,6 +1,5 @@
 <?php
 include("./required.php");
-// Cinemas listing page — loads shared setup and lists cinemas
 ?>
 <!doctype html>
 <html lang="en">

@@ -1,6 +1,5 @@
 <?php
 include("./required.php");
-// Main public homepage — loads shared setup and site navigation
 ?>
 <!doctype html>
 <html lang="en">

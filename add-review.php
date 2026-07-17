@@ -1,6 +1,7 @@
 <?php
+// Import shared functions and database connection for user pages
 include("./required.php");
-// Review page — loads shared setup and the review form logic
+// Import file that handles review submission logic
 include("./logics/add-review.php");
 ?>
 <!doctype html>
@@ -8,7 +9,7 @@ include("./logics/add-review.php");
 
 <head>
     <?php
-    // Render the shared <head> section with page title and required assets
+    // Use head function to add title and required assets for the page
     head("Review");
     ?>
     <link rel="stylesheet" href="./css/review.css">
@@ -16,14 +17,17 @@ include("./logics/add-review.php");
 
 <body>
     <?php
-    // Render the site navigation bar
+    // Use navbar function to display the website navigation bar
     navbar();
     ?>
 
+
+    <!-- Start of the main content -->
     <main>
         <div class="container py-5" style="min-height:70vh;">
 
 
+            <!-- Review card containing movie details and review form -->
             <div class="card shadow-sm mx-auto review-card">
 
 
@@ -39,10 +43,12 @@ include("./logics/add-review.php");
 
 
 
-                    <!-- Review form for the selected movie -->
+                    <!-- Form to submit a review for the selected movie -->
                     <form method="POST">
 
 
+
+                        <!-- Rating selection using star inputs -->
 
                         <label class="form-label">
 
@@ -81,6 +87,8 @@ include("./logics/add-review.php");
 
 
 
+                        <!-- Text area for user review comment -->
+
                         <div class="mb-3">
 
 
@@ -103,6 +111,8 @@ include("./logics/add-review.php");
 
 
 
+
+                        <!-- Submit button to save the review -->
 
                         <button
                             class="btn btn-danger"
@@ -131,8 +141,10 @@ include("./logics/add-review.php");
 
 
     <?php
+    // Use footer function to display the website footer
     footer();
     ?>
+
 
     <!-- Bootstrap JS -->
     <script src="./bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>

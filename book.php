@@ -1,6 +1,8 @@
 <?php
+// Import shared user-side functions, database connection, navbar, head and footer functions
 include("./required.php");
-// Booking page — loads shared setup and booking logic
+
+// Import booking logic that handles validation and ticket insertion
 include("./logics/book.php");
 ?>
 <!doctype html>
@@ -8,32 +10,35 @@ include("./logics/book.php");
 
 <head>
     <?php
-    // Render the shared <head> section with page title and required assets
+    // Generate the page title and include required assets
     head("Book Tickets");
     ?>
 </head>
 
 <body>
     <?php
-    // Render the site navigation bar
+    // Display the user navigation bar
     navbar();
     ?>
+
 
     <main>
         <div class="container py-5" style="min-height:70vh;">
 
 
-            <!-- Movie information section -->
+            <!-- Display selected movie information -->
 
             <div class="card shadow-sm mb-4">
 
                 <div class="card-body">
 
+                    <!-- Show movie title -->
                     <h2>
                         <?= $movie["title"] ?>
                     </h2>
 
 
+                    <!-- Display movie language and genre -->
                     <p class="text-muted">
                         <?= $movie["language"] ?> |
                         <?= $movie["genre"] ?>
@@ -45,31 +50,32 @@ include("./logics/book.php");
             </div>
 
 
-
-
-
-            <!-- Cinema and schedule details -->
+            <!-- Display selected cinema and show schedule information -->
 
             <div class="card shadow-sm mb-4">
 
                 <div class="card-body">
 
 
+                    <!-- Display cinema name -->
                     <h4>
                         <?= $cinema["name"] ?>
                     </h4>
 
 
+                    <!-- Display cinema location -->
                     <p>
                         📍 <?= $cinema["location"] ?>
                     </p>
 
 
+                    <!-- Display show date -->
                     <p>
                         📅 <?= $schedule["date"] ?>
                     </p>
 
 
+                    <!-- Display show time -->
                     <p>
                         🕒 <?= $schedule["time"] ?>
                     </p>
@@ -80,10 +86,7 @@ include("./logics/book.php");
             </div>
 
 
-
-
-
-            <!-- Booking form section -->
+            <!-- Ticket booking form section -->
 
             <div class="card shadow-sm">
 
@@ -96,12 +99,11 @@ include("./logics/book.php");
 
 
 
-                    <!-- Booking form with class, ticket count and children count -->
+                    <!-- Form for selecting ticket class and quantity -->
                     <form method="POST">
 
 
-
-                        <!-- Class -->
+                        <!-- Ticket class selection -->
 
                         <div class="mb-3">
 
@@ -110,6 +112,7 @@ include("./logics/book.php");
                             </label>
 
 
+                            <!-- User selects seat category -->
                             <select
                                 name="class_type"
                                 id="class_type"
@@ -138,10 +141,7 @@ include("./logics/book.php");
                         </div>
 
 
-
-
-
-                        <!-- Ticket Amount -->
+                        <!-- Number of tickets input -->
 
                         <div class="mb-3">
 
@@ -150,6 +150,7 @@ include("./logics/book.php");
                             </label>
 
 
+                            <!-- Stores total ticket quantity -->
                             <input
                                 type="number"
                                 name="tkt_amount"
@@ -160,13 +161,11 @@ include("./logics/book.php");
                                 oninput="calculateTotal()">
 
 
+
                         </div>
 
 
-
-
-
-                        <!-- Children -->
+                        <!-- Children ticket input -->
 
                         <div class="mb-3">
 
@@ -180,6 +179,7 @@ include("./logics/book.php");
                             </label>
 
 
+                            <!-- Stores number of discounted children tickets -->
                             <input
                                 type="number"
                                 name="children_amount"
@@ -194,10 +194,7 @@ include("./logics/book.php");
                         </div>
 
 
-
-
-
-                        <!-- Total -->
+                        <!-- Dynamic total price display -->
 
                         <div class="alert alert-danger">
 
@@ -215,8 +212,7 @@ include("./logics/book.php");
                         </div>
 
 
-
-
+                        <!-- Submit booking request -->
 
                         <button
                             type="submit"
@@ -244,13 +240,18 @@ include("./logics/book.php");
     </main>
 
 
+
     <?php
+    // Display shared footer
     footer();
     ?>
 
-    <!-- Bootstrap JS -->
+
+    <!-- Bootstrap JavaScript -->
     <script src="./bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
 
+
+    <!-- Pass schedule prices to JavaScript for live total calculation -->
     <script>
         let prices = {
 
@@ -263,7 +264,10 @@ include("./logics/book.php");
         };
     </script>
 
+
+    <!-- Booking price calculation script -->
     <script src="./js/bookings.js"></script>
+
 </body>
 
 </html>

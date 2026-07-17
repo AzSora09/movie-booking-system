@@ -1,6 +1,8 @@
 <?php
+// Import shared functions and database connection for admin pages
 include("./adminrequired.php");
-// Admin edit movie — loads movie helpers and admin checks
+
+// Import file that contains movie related functions
 include("./logics/movies.php");
 ?>
 <!doctype html>
@@ -8,150 +10,184 @@ include("./logics/movies.php");
 
 <head>
     <?php
+    // Use head function to add title and required assets for the page
     head("Edit Movie");
     ?>
 </head>
 
 <body>
     <?php
+    // Navbar
     navbar();
     ?>
 
-
+    <!-- Start of the main content -->
     <main>
+
         <div class="container mt-5">
+
             <h2>Edit Movie</h2>
-            <!-- Edit form: fields are prefilled; submit updates the movie -->
+
             <?php
+            // Fetch movie details from the database
             $result = selectdata("movies", $_GET["id"]);
             $row = mysqli_fetch_assoc($result);
             ?>
+
+            <!-- Start of the form to edit movie details -->
             <form action="" method="post" enctype="multipart/form-data">
 
+                <!-- Input field for movie name -->
                 <div class="mb-3">
-                    <label for="" class="form-label">Movie Name</label>
+
+                    <label class="form-label">Movie Name</label>
+
                     <input
                         type="text"
                         name="name"
                         value="<?php echo $row["title"]; ?>"
-                        class="form-control"
-                        placeholder=""
-                        aria-describedby="helpId" />
+                        class="form-control" />
+
                 </div>
 
+
+                <!-- Input field for movie description -->
                 <div class="mb-3">
-                    <label for="" class="form-label">Description</label>
+
+                    <label class="form-label">Description</label>
+
                     <textarea
-                        type="text"
                         name="desc"
                         class="form-control"
                         rows="6"
-                        maxlength="2000"
-                        placeholder=""
-                        aria-describedby="helpId"><?php echo $row["description"]; ?></textarea>
+                        maxlength="2000"><?php echo $row["description"]; ?></textarea>
+
                 </div>
 
+
+                <!-- Input field for movie genre -->
                 <div class="mb-3">
-                    <label for="" class="form-label">Genre</label>
+
+                    <label class="form-label">Genre</label>
+
                     <input
                         type="text"
                         name="genre"
                         value="<?php echo $row["genre"]; ?>"
-                        class="form-control"
-                        placeholder=""
-                        aria-describedby="helpId" />
+                        class="form-control" />
+
                 </div>
 
+
+                <!-- Input fields for movie duration -->
                 <div class="mb-3">
-                    <label for="" class="form-label">Duration</label>
+
+                    <label class="form-label">Duration</label>
+
                     <div>
+
                         <input
                             type="number"
                             name="dur_hr"
                             value="<?php echo explode(' ', $row["duration"])[0]; ?>"
                             class="form-control d-inline"
-                            style="width: 3vw"
-                            placeholder=""
-                            aria-describedby="helpId" />
+                            style="width: 3vw" />
+
                         hr
+
                         <input
                             type="number"
                             name="dur_min"
                             value="<?php echo explode(' ', $row["duration"])[2]; ?>"
                             class="form-control d-inline"
-                            style="width: 3vw"
-                            placeholder=""
-                            aria-describedby="helpId" />
+                            style="width: 3vw" />
+
                         min
+
                     </div>
+
                 </div>
 
+
+                <!-- Input field for movie language -->
                 <div class="mb-3">
-                    <label for="" class="form-label">Language</label>
+
+                    <label class="form-label">Language</label>
+
                     <input
                         type="text"
                         name="lang"
                         value="<?php echo $row["language"]; ?>"
-                        class="form-control"
-                        placeholder=""
-                        aria-describedby="helpId" />
+                        class="form-control" />
+
                 </div>
 
+
+                <!-- Input field for movie age rating -->
                 <div class="mb-3">
-                    <label for="" class="form-label">Age Rating</label>
+
+                    <label class="form-label">Age Rating</label>
+
                     <input
                         type="text"
                         name="age"
                         value="<?php echo $row["age_rating"]; ?>"
-                        id=""
-                        class="form-control"
-                        placeholder=""
-                        aria-describedby="helpId" />
+                        class="form-control" />
+
                 </div>
 
+
+                <!-- Input field for movie poster -->
                 <div class="mb-3">
-                    <label for="" class="form-label">Poster</label>
+
+                    <label class="form-label">Poster</label>
+
                     <input
                         type="file"
                         name="poster"
-                        id=""
-                        class="form-control"
-                        placeholder=""
-                        aria-describedby="helpId" />
+                        class="form-control" />
+
                 </div>
 
+
+                <!-- Input field for movie trailer -->
                 <div class="mb-3">
-                    <label for="" class="form-label">Trailer (Youtube Link)</label>
+
+                    <label class="form-label">Trailer (YouTube Link)</label>
+
                     <input
                         type="text"
                         name="trailer"
                         value="https://www.youtube.com/watch?v=<?php echo $row["trailer"]; ?>"
-                        class="form-control"
-                        placeholder=""
-                        aria-describedby="helpId" />
+                        class="form-control" />
+
                 </div>
 
+
+                <!-- Submit button to update movie -->
                 <button
                     type="submit"
                     name="submit"
                     class="btn btn-primary">
+
                     Submit
+
                 </button>
+
             </form>
+
             <?php
-                // Process edit submission and update the movie record
-                editmovie($_GET["id"]);
+            // Function to update movie details when the form is submitted
+            editmovie($_GET["id"]);
             ?>
+
         </div>
+
     </main>
-
-
-    <footer>
-
-    </footer>
 
     <!-- Bootstrap JS -->
     <script src="../bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
+
 </body>
 
 </html>

@@ -1,4 +1,4 @@
-/* Review styles — star ratings and review form */
+/* Styles for review cards and star rating components */
 .review-card {
 
     max-width: 600px;
@@ -6,7 +6,7 @@
 }
 
 
-
+/* Arrange rating stars and allow reverse selection order */
 .rating {
 
     display: flex;
@@ -18,7 +18,7 @@
 }
 
 
-
+/* Hide radio buttons while keeping star selection functionality */
 .rating input {
 
     display: none;
@@ -26,7 +26,7 @@
 }
 
 
-
+/* Style rating stars shown in the review form */
 .rating label {
 
     font-size: 40px;
@@ -38,7 +38,7 @@
 }
 
 
-
+/* Change selected stars color */
 .rating input:checked ~ label {
 
     color: gold;
@@ -46,7 +46,7 @@
 }
 
 
-
+/* Change star color when hovering over rating options */
 .rating label:hover,
 .rating label:hover ~ label {
 
@@ -54,9 +54,12 @@
 
 }
 
+
+/* Style stars displayed when viewing reviews */
 .review-stars {
 
     color: gold;
+
     font-size: 20px;
 
 }
