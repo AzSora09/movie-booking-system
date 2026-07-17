@@ -1,5 +1,7 @@
 <?php
+// Import shared functions and database connection for user pages
 include("./required.php");
+// Import file that handles movies logic
 include("./logics/movie.php");
 ?>
 <!doctype html>
@@ -7,7 +9,7 @@ include("./logics/movie.php");
 
 <head>
     <?php
-    // Render the shared <head> section with page title and required assets
+    // Use head function to add title and required assets for the page
     head($movie["title"]);
     ?>
     <link rel="stylesheet" href="./css/review.css">
@@ -15,7 +17,7 @@ include("./logics/movie.php");
 
 <body>
     <?php
-    // Render the site navigation bar
+    // Navbar
     navbar();
     ?>
 
@@ -27,6 +29,7 @@ include("./logics/movie.php");
 
                 <div class="col-md-4">
 
+                    <!-- Movie Poster -->
                     <img
                         src="./images/<?php echo $movie["poster"]; ?>"
                         class="img-fluid rounded shadow"
@@ -35,6 +38,7 @@ include("./logics/movie.php");
                 </div>
 
 
+                <!-- Movie Information -->
                 <div class="col-md-8">
 
                     <h1>
@@ -106,14 +110,15 @@ include("./logics/movie.php");
 
 
 
-            <!-- Available showtimes for this movie -->
+            <!-- Available show times for this movie -->
 
             <h3 class="mb-3">
                 Available Shows
             </h3>
 
 
-            <?php if (mysqli_num_rows($schedule_query) == 0) { ?>
+            <?php
+            if (mysqli_num_rows($schedule_query) == 0) { ?>
 
                 <div class="alert alert-warning">
                     No schedules available currently.
@@ -127,6 +132,7 @@ include("./logics/movie.php");
 
                     <table class="table table-striped">
 
+                        <!-- Table Header -->
                         <thead>
 
                             <tr>
@@ -143,7 +149,8 @@ include("./logics/movie.php");
                         <tbody>
 
 
-                            <?php // Render each available showtime as a table row
+                            <?php
+                            // Show available schedules for this movie
                             while ($schedule = mysqli_fetch_assoc($schedule_query)) { ?>
 
 
@@ -220,7 +227,9 @@ include("./logics/movie.php");
                     </h3>
 
 
-                    <?php if (isset($_SESSION["user_name"])) { ?>
+                    <?php
+                    // Allow users to write a review if they are logged in, otherwise ask them to log in first
+                    if (isset($_SESSION["user_name"])) { ?>
 
                         <a
                             href="./add-review.php?movie=<?php echo $movie_id; ?>"
@@ -246,7 +255,10 @@ include("./logics/movie.php");
 
 
 
-                <?php if (mysqli_num_rows($review_query) == 0) { ?>
+                <?php
+                // Check if there are any reviews for this movie
+                // If there are no reviews, display a message. Otherwise, show all reviews for this movie
+                if (mysqli_num_rows($review_query) == 0) { ?>
 
 
                     <div class="alert alert-info">
@@ -259,7 +271,9 @@ include("./logics/movie.php");
                 <?php } else { ?>
 
 
-                    <?php // Loop through reviews and render each one
+                    <?php
+
+                    // Get all reviews for this movie and display them in a card format
                     while ($review = mysqli_fetch_assoc($review_query)) { ?>
 
 
@@ -365,6 +379,7 @@ include("./logics/movie.php");
 
 
     <?php
+    // Footer
     footer();
     ?>
 

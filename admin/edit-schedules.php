@@ -49,7 +49,7 @@ include("./logics/schedules.php");
                         $movie_name = getvalue("movies", "title", $row["movie_id"]);
                         echo "<option value='{$row["movie_id"]}' selected>{$movie_name}</option>";
 
-                        // Fetch all movies from the database
+                        // Fetch remaining movies from the database
                         $movies = selectdata("movies");
 
                         while ($movie = mysqli_fetch_assoc($movies)) {
@@ -80,7 +80,7 @@ include("./logics/schedules.php");
                         $cinema_name = getvalue("cinemas", "name", $row["cinema_id"]);
                         echo "<option value='{$row["cinema_id"]}' selected>{$cinema_name}</option>";
 
-                        // Fetch all cinemas from the database
+                        // Fetch remaining cinemas from the database
                         $cinemas = selectdata("cinemas");
 
                         while ($cinema = mysqli_fetch_assoc($cinemas)) {

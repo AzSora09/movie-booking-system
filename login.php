@@ -1,13 +1,16 @@
 <?php
+// Import shared functions and database connection for user pages
 include("./required.php");
 ?>
-<?php // Login page for existing users to enter email and password ?>
 <!doctype html>
 <html lang="en">
 
 <head>
 
-    <?php head("Login"); ?>
+    <?php
+    // Use head function to add title and required assets for the page
+    head("Login");
+    ?>
 
     <link rel="stylesheet" href="./css/auth.css">
 
@@ -90,7 +93,7 @@ include("./required.php");
         </form>
 
         <?php
-        // Run the login handler when the form is submitted
+        // Function to login when login form is submitted
         login();
         ?>
 

@@ -36,6 +36,7 @@ if (isset($_GET["delete-id"])) {
 
                 <table class="table table-primary">
 
+                    <!-- Table Header -->
                     <thead>
 
                         <tr>
@@ -53,6 +54,7 @@ if (isset($_GET["delete-id"])) {
                     </thead>
 
 
+                    <!-- Table Body -->
                     <tbody>
 
                         <?php

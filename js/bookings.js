@@ -1,4 +1,4 @@
-/* Calculate total booking price based on seat class and children concession */
+// Calculate total booking price based on seat class and children concession
 function calculateTotal() {
 
     // Get selected seat class

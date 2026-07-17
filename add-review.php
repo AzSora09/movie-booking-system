@@ -17,7 +17,7 @@ include("./logics/add-review.php");
 
 <body>
     <?php
-    // Use navbar function to display the website navigation bar
+    // Navbar
     navbar();
     ?>
 
@@ -141,7 +141,7 @@ include("./logics/add-review.php");
 
 
     <?php
-    // Use footer function to display the website footer
+    // Footer
     footer();
     ?>
 

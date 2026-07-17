@@ -30,6 +30,7 @@ include("./adminrequired.php");
 
                 <table class="table table-primary">
 
+                    <!-- Table Header -->
                     <thead>
 
                         <tr>
@@ -45,6 +46,7 @@ include("./adminrequired.php");
                     </thead>
 
 
+                    <!-- Table Body -->
                     <tbody>
 
                         <?php

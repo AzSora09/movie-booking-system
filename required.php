@@ -1,17 +1,17 @@
 <?php
-// Start session to track user login and maintain state across pages
+// Start session on all user pages
 session_start();
 
-// Connect to the database for all pages that include this file
+// Database connection shared by all pages
 $conn = mysqli_connect('localhost', 'root', '', 'movie-booking-system');
 
-// Function alertjs: Display a JavaScript alert dialog with a message
+// PHP function to use JavaScript alert to not write the js code again and again
 function alertjs($content)
 {
     echo "<script> alert(" . json_encode($content) . ") </script>";
 }
 
-// Function redirect: Use JavaScript to send user to a different page
+// PHP function to redirect to a different page using JavaScript
 function redirect($url)
 {
     echo "<script> window.location.href = " . json_encode($url) . " </script>";
@@ -19,7 +19,7 @@ function redirect($url)
 }
 
 
-// Function head: Output the HTML head section with page title and CSS/JS links
+// PHP function to include the head section of the HTML document with a dynamic title given as parameter
 function head($title)
 {
 ?>
@@ -37,7 +37,7 @@ function head($title)
 ?>
 
 <?php
-// Function navbar: Display the top navigation bar with menu items and user dropdown
+// PHP function to use navbar for admin pages
 function navbar()
 { ?>
     <header>
@@ -159,6 +159,7 @@ function navbar()
     </header>
 <?php }
 
+// PHP function to include the footer section of the HTML document
 function footer()
 { ?>
     <footer class="bg-dark text-light mt-5 py-4 position-relative bottom-0 w-100">
@@ -203,6 +204,7 @@ function footer()
 <?php
 }
 
+// PHP function to handle user registration logic
 function register()
 {
     if (isset($_POST['submit'])) {
@@ -224,6 +226,7 @@ function register()
     }
 }
 
+// PHP function to handle user login logic
 function login()
 {
     if (isset($_POST['submit'])) {
@@ -256,6 +259,7 @@ function login()
     }
 }
 
+// Function to select data from MySQL database, either all rows or a specific row by ID
 function selectdata($table, $id = null)
 {
     // Fetch all rows from a table or a single row when ID is provided
@@ -270,6 +274,7 @@ function selectdata($table, $id = null)
     return $result;
 }
 
+// Function to get a specific column value from a MySQL database table based on the provided ID
 function getvalue($table, $column, $id)
 {
     global $conn;
@@ -280,6 +285,7 @@ function getvalue($table, $column, $id)
     return $row[$column];
 }
 
+// Function to count the total number of rows in a MySQL database table
 function countdata($table)
 {
     global $conn;

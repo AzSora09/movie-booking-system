@@ -1,5 +1,7 @@
 <?php
+// Import shared functions and database connection for user pages
 include("./required.php");
+// Import file that handles reviews showing logic
 include("./logics/my-bookings.php");
 ?>
 <!doctype html>
@@ -7,14 +9,14 @@ include("./logics/my-bookings.php");
 
 <head>
     <?php
-    // Render the shared <head> section with page title and required assets
+    // Use head function to add title and required assets for the page
     head("My Bookings");
     ?>
 </head>
 
 <body>
     <?php
-    // Render the site navigation bar
+    // Navbar
     navbar();
     ?>
 
@@ -28,7 +30,9 @@ include("./logics/my-bookings.php");
 
 
 
-            <?php if (mysqli_num_rows($booking_query) == 0) { ?>
+            <?php
+            // Check if the user has any bookings
+            if (mysqli_num_rows($booking_query) == 0) { ?>
 
                 <!-- Show an empty state when the user has no bookings -->
                 <div class="alert alert-warning">
@@ -160,6 +164,7 @@ include("./logics/my-bookings.php");
 
 
     <?php
+    // Footer
     footer();
     ?>
 

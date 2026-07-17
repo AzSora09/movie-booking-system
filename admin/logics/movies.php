@@ -1,6 +1,6 @@
 <?php
 
-// Function addmovie: Handle adding a new movie to the database
+// Function to add movie to database
 function addmovie()
 {
     global $conn;
@@ -18,7 +18,7 @@ function addmovie()
         $image = imgverif($_FILES["poster"], "movie");
         $trailer = mysqli_real_escape_string($conn, youtubeID($_POST["trailer"]));
 
-        // Check if the uploaded poster is valid
+        // Insert movie into database if Image is valid
         if ($image) {
 
             // Insert movie into the database
@@ -40,7 +40,7 @@ function addmovie()
 }
 
 
-// Function editmovie: Handle updating an existing movie in the database
+// Function to edit existing movie details in the database
 function editmovie($id)
 {
     global $conn;

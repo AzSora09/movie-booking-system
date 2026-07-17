@@ -1,6 +1,6 @@
 <?php
 
-// Function addschedule: Handle adding a new movie schedule to the database
+// Function to add schedule to database
 function addschedule()
 {
     global $conn;
@@ -37,7 +37,7 @@ function addschedule()
 }
 
 
-// Function editschedule: Handle updating an existing movie schedule in the database
+// Function to edit existing schedule in database
 function editschedule()
 {
     global $conn;

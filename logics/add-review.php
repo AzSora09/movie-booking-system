@@ -20,18 +20,14 @@ if (!isset($_GET["movie"])) {
 }
 
 
+// Get movie id from URL
 $movie_id = $_GET["movie"];
 
 
 // Fetch selected movie details
-$movie_query = mysqli_query(
-    $conn,
-    "SELECT *
-     FROM movies
-     WHERE id = $movie_id"
-);
+$movie_query = selectdata("movies", $movie_id);
 
-
+// Redirect back to movies page if movie does not exist
 if (mysqli_num_rows($movie_query) == 0) {
 
     redirect("./movies.php");
@@ -101,6 +97,7 @@ if (isset($_POST["submit"])) {
         );
 
 
+        // Don't allow user to add a review if they have already reviewed this movie
         if (mysqli_num_rows($check_review) > 0) {
 
             alertjs("You have already reviewed this movie.");

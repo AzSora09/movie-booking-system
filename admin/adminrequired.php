@@ -169,25 +169,32 @@ function imgverif($file, $prefix)
     $imgtmp = $file["tmp_name"];
     $imgname = $file["name"];
 
+    // get extension of the uploaded image and convert it to lowercase for comparison
     $exte = strtolower(pathinfo($imgname, PATHINFO_EXTENSION));
 
+    // Allowed image extensions for validation
     $allowed = ["jpg", "jpeg", "png", "webp"];
 
+    // Check if the uploaded file has a valid image extension
     if (!in_array($exte, $allowed)) {
         return false;
     }
 
+    // Check if the uploaded file is a valid image using getimagesize function
     if (getimagesize($imgtmp) === false) {
         return false;
     }
 
+    // Generate a unique name for the uploaded image to avoid conflicts
     $newname = uniqid($prefix . "_", true) . "." . $exte;
     $destination = "../images/" . $newname;
 
+    // Move the uploaded image to the shared images folder and return the new name if successful
     if (move_uploaded_file($imgtmp, $destination)) {
         return $newname;
     }
 
+    // Return false if the image upload or move operation fails
     return false;
 }
 
@@ -218,6 +225,7 @@ function youtubeID($input)
         return ltrim($parts["path"], "/");
     }
 
+    // Return false if the input is not a valid YouTube link or video ID
     return false;
 }
 
@@ -227,6 +235,7 @@ function selectdata($table, $id = null)
     // Fetch all rows from a table or a single row when ID is provided
     global $conn;
 
+    // If an ID is provided, fetch the specific row. otherwise, fetch all rows from the table
     if ($id !== null) {
         $result = mysqli_query($conn, "Select * from $table where id = $id");
     } else {

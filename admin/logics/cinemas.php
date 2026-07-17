@@ -1,6 +1,6 @@
 <?php
 
-// Function addcinema: Handle adding a new cinema to the database
+// Function to add cinema to database
 function addcinema()
 {
     global $conn;
@@ -18,16 +18,17 @@ function addcinema()
             VALUES ('$name','$location')
         ");
 
-        // Display success message after adding the cinema
+        // Display success message after adding the cinema and refresh page
         if ($query) {
             alertjs("Cinema added successfully");
+            redirect("./add-cinema.php");
             exit;
         }
     }
 }
 
 
-// Function editcinema: Handle updating an existing cinema in the database
+// Function to edit an existing cinema in the database
 function editcinema($id)
 {
     global $conn;

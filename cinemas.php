@@ -1,4 +1,5 @@
 <?php
+// Import shared functions and database connection for user pages
 include("./required.php");
 ?>
 <!doctype html>
@@ -6,14 +7,14 @@ include("./required.php");
 
 <head>
     <?php
-    // Render the shared <head> section with page title and required assets
-    head("Movies");
+    // Use head function to add title and required assets for the page
+    head("Cinemas");
     ?>
 </head>
 
 <body>
     <?php
-    // Render the site navigation bar
+    // Navbar
     navbar();
     ?>
 
@@ -27,82 +28,48 @@ include("./required.php");
 
                 <?php
 
-                // Search cinemas by name or location when search param present
-                if (isset($_GET["search"]) && $_GET["search"] != "") {
 
-                    $search = mysqli_real_escape_string($conn, $_GET["search"]);
-
-                    $query = mysqli_query(
-                        $conn,
-                        "SELECT * FROM cinemas
-                 WHERE name LIKE '%$search%'
-                    OR location LIKE '%$search%'
+                // Display all cinemas ordered alphabetically
+                $query = mysqli_query(
+                    $conn,
+                    "SELECT * FROM cinemas
                  ORDER BY name"
-                    );
-                } else {
+                );
 
-                    // Default: list all cinemas ordered by name
-                    $query = mysqli_query(
-                        $conn,
-                        "SELECT * FROM cinemas
-                 ORDER BY name"
-                    );
-                }
+                // Loop through cinemas and create a card for each cinema
+                while ($cinema = mysqli_fetch_assoc($query)) {
 
-                // If no cinemas found, show a message
-                if (mysqli_num_rows($query) == 0) {
                 ?>
 
-                    <div class="d-flex flex-column justify-content-center align-items-center text-center py-5" style="min-height: 60vh;">
+                    <div class="col-md-4">
 
-                        <h2 class="text-muted">No Results Found</h2>
+                        <div class="card h-100 shadow-sm">
 
-                        <p class="text-secondary">
-                            We couldn't find any cinemas matching your search.
-                        </p>
+                            <div class="card-body d-flex flex-column">
 
-                        <a href="./cinemas.php" class="btn btn-danger mt-2">
-                            View All Cinemas
-                        </a>
+                                <h4 class="card-title">
+                                    <?= $cinema["name"] ?>
+                                </h4>
 
-                    </div>
+                                <p class="text-muted">
+                                    <?= $cinema["location"] ?>
+                                </p>
 
-                    <?php
 
-                } else {
-
-                    while ($cinema = mysqli_fetch_assoc($query)) {
-
-                    ?>
-
-                        <div class="col-md-4">
-
-                            <div class="card h-100 shadow-sm">
-
-                                <div class="card-body d-flex flex-column">
-
-                                    <h4 class="card-title">
-                                        <?= $cinema["name"] ?>
-                                    </h4>
-
-                                    <p class="text-muted">
-                                        <?= $cinema["location"] ?>
-                                    </p>
-
-                                    <a
-                                        href="./cinema.php?id=<?= $cinema["id"] ?>"
-                                        class="btn btn-danger mt-auto">
-                                        View Movies
-                                    </a>
-
-                                </div>
+                                <!-- Link to view movies and schedules available in this cinema -->
+                                <a
+                                    href="./cinema.php?id=<?= $cinema["id"] ?>"
+                                    class="btn btn-danger mt-auto">
+                                    View Movies
+                                </a>
 
                             </div>
 
                         </div>
 
+                    </div>
+
                 <?php
-                    }
                 }
                 ?>
 
@@ -113,8 +80,10 @@ include("./required.php");
 
 
     <?php
+    // Footer
     footer();
     ?>
+
 
     <!-- Bootstrap JS -->
     <script src="./bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>

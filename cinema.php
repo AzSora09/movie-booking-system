@@ -1,5 +1,7 @@
 <?php
+// Import shared functions and database connection for user pages
 include("./required.php");
+// Import file that handles cinema logic
 include("./logics/cinema.php");
 ?>
 <!doctype html>
@@ -7,22 +9,24 @@ include("./logics/cinema.php");
 
 <head>
     <?php
-    // Render the shared <head> section with page title and required assets
+    // Use head function to add title and required assets for the page
     head($cinema["name"]);
     ?>
 </head>
 
 <body>
     <?php
-    // Render the site navigation bar
+    // Navbar
     navbar();
     ?>
 
+    <!-- Main Content -->
     <main>
         <div class="container py-5" style="min-height:70vh;">
 
             <div class="mb-5">
 
+                <!-- Display cinema name and location -->
                 <h1>
                     <?php echo $cinema["name"]; ?>
                 </h1>
@@ -33,7 +37,7 @@ include("./logics/cinema.php");
 
             </div>
 
-
+            <!-- Display movies showing in the cinema -->
             <h3 class="mb-4">
                 Movies Showing
             </h3>
@@ -85,6 +89,7 @@ include("./logics/cinema.php");
 
                                         <?php
 
+                                        // Display the title of the movie
                                         echo getvalue(
                                             "movies",
                                             "title",
@@ -96,6 +101,7 @@ include("./logics/cinema.php");
                                     </h4>
 
 
+                                    <!-- Movie Details Button -->
                                     <a
                                         href="./movie.php?id=<?= $schedule["movie_id"] ?>"
                                         class="btn btn-outline-danger">
@@ -123,7 +129,7 @@ include("./logics/cinema.php");
 
                                     <div class="border rounded p-3">
 
-
+                                        <!-- Show Date and Time -->
                                         <p>
                                             📅 <?= $schedule["date"] ?>
                                         </p>
@@ -133,7 +139,7 @@ include("./logics/cinema.php");
                                             🕒 <?= $schedule["time"] ?>
                                         </p>
 
-
+                                        <!-- Display ticket prices for different seating categories -->
                                         <p>
 
                                             Box:
@@ -184,6 +190,7 @@ include("./logics/cinema.php");
 
 
     <?php
+    // Footer
     footer();
     ?>
 

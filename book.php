@@ -1,8 +1,8 @@
 <?php
-// Import shared user-side functions, database connection, navbar, head and footer functions
+// Import shared functions and database connection for user pages
 include("./required.php");
 
-// Import booking logic that handles validation and ticket insertion
+// Import file that handles booking logic
 include("./logics/book.php");
 ?>
 <!doctype html>
@@ -10,14 +10,14 @@ include("./logics/book.php");
 
 <head>
     <?php
-    // Generate the page title and include required assets
+    // Use head function to add title and required assets for the page
     head("Book Tickets");
     ?>
 </head>
 
 <body>
     <?php
-    // Display the user navigation bar
+    // Navbar
     navbar();
     ?>
 

@@ -20,17 +20,12 @@ if (!isset($_GET["schedule"])) {
 
 }
 
-
+// Get schedule id from URL
 $schedule_id = $_GET["schedule"];
 
 
 // Fetch schedule details
-$schedule_query = mysqli_query(
-    $conn,
-    "SELECT *
-     FROM schedules
-     WHERE id = $schedule_id"
-);
+$schedule_query = selectdata("schedules", $schedule_id);
 
 
 
@@ -49,12 +44,7 @@ $schedule = mysqli_fetch_assoc($schedule_query);
 // Fetch movie details from schedule
 $movie = mysqli_fetch_assoc(
 
-    mysqli_query(
-        $conn,
-        "SELECT *
-         FROM movies
-         WHERE id = " . $schedule["movie_id"]
-    )
+    selectdata("movies", $schedule["movie_id"])
 
 );
 
@@ -64,12 +54,7 @@ $movie = mysqli_fetch_assoc(
 // Fetch cinema details from schedule
 $cinema = mysqli_fetch_assoc(
 
-    mysqli_query(
-        $conn,
-        "SELECT *
-         FROM cinemas
-         WHERE id = " . $schedule["cinema_id"]
-    )
+    selectdata("cinemas", $schedule["cinema_id"])
 
 );
 

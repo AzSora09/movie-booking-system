@@ -1,4 +1,5 @@
 <?php
+// Import shared functions and database connection for user pages
 include("./required.php");
 ?>
 <!doctype html>
@@ -6,14 +7,14 @@ include("./required.php");
 
 <head>
     <?php
-    // Render the shared <head> section with page title and required assets
+    // Use head function to add title and required assets for the page
     head("Movies");
     ?>
 </head>
 
 <body>
     <?php
-    // Render the site navigation bar
+    // Navbar
     navbar();
     ?>
 
@@ -28,7 +29,7 @@ include("./required.php");
             <div class="row g-4">
 
                 <?php
-                // If there is a search query, sanitize and search titles
+                // Filter movies if a search query is provided, otherwise show all movies
                 if (isset($_GET["search"]) && $_GET["search"] != "") {
 
                     $search = mysqli_real_escape_string($conn, $_GET["search"]);
@@ -69,7 +70,7 @@ include("./required.php");
                     );
                 }
 
-                // Render movie cards from query results
+                // Show query resulted movies in a grid layout
                 while ($movie = mysqli_fetch_assoc($query)) {
                     ?>
 
@@ -117,6 +118,7 @@ include("./required.php");
 
 
     <?php
+    // Footer
     footer();
     ?>
 
