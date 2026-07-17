@@ -1,4 +1,5 @@
 <?php
+// Booking logic: validates schedule, calculates price, inserts ticket
 global $conn;
 
 // Check login
@@ -50,7 +51,7 @@ $schedule = mysqli_fetch_assoc($schedule_query);
 
 
 
-// Fetch movie
+// Fetch movie related to the schedule
 
 $movie = mysqli_fetch_assoc(
 
@@ -67,7 +68,7 @@ $movie = mysqli_fetch_assoc(
 
 
 
-// Fetch cinema
+// Fetch cinema related to the schedule
 
 $cinema = mysqli_fetch_assoc(
 
@@ -85,7 +86,7 @@ $cinema = mysqli_fetch_assoc(
 
 
 // Booking submit
-
+// Handle booking form submission
 if (isset($_POST["book"])) {
 
 

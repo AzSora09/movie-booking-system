@@ -1,6 +1,6 @@
 <?php
 include("./required.php");
-// Public home page for the movie booking system
+// Movie details page — loads shared setup and movie logic
 include("./logics/movie.php");
 ?>
 <!doctype html>
@@ -77,7 +77,7 @@ include("./logics/movie.php");
             </div>
 
 
-            <!-- Description -->
+            <!-- Movie description and details -->
             <div class="mb-5">
 
                 <h3>Description</h3>
@@ -107,7 +107,7 @@ include("./logics/movie.php");
 
 
 
-            <!-- Schedules -->
+            <!-- Available showtimes for this movie -->
 
             <h3 class="mb-3">
                 Available Shows
@@ -144,7 +144,8 @@ include("./logics/movie.php");
                         <tbody>
 
 
-                            <?php while ($schedule = mysqli_fetch_assoc($schedule_query)) { ?>
+                            <?php // Render each available showtime as a table row
+                            while ($schedule = mysqli_fetch_assoc($schedule_query)) { ?>
 
 
                                 <tr>
@@ -209,7 +210,7 @@ include("./logics/movie.php");
 
             <?php } ?>
 
-            <!-- Reviews -->
+            <!-- Reviews section -->
 
             <div class="mt-5">
 
@@ -259,7 +260,8 @@ include("./logics/movie.php");
                 <?php } else { ?>
 
 
-                    <?php while ($review = mysqli_fetch_assoc($review_query)) { ?>
+                    <?php // Loop through reviews and render each one
+                    while ($review = mysqli_fetch_assoc($review_query)) { ?>
 
 
                         <div class="card mb-3 shadow-sm">

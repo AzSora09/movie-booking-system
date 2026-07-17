@@ -1,6 +1,6 @@
 <?php
 include("./required.php");
-// Public home page for the movie booking system
+// Review page — loads shared setup and the review form logic
 include("./logics/add-review.php");
 ?>
 <!doctype html>
@@ -39,6 +39,7 @@ include("./logics/add-review.php");
 
 
 
+                    <!-- Review form for the selected movie -->
                     <form method="POST">
 
 

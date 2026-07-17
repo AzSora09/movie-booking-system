@@ -1,6 +1,6 @@
 <?php
 include("./required.php");
-// Public home page for the movie booking system
+// Cinema page — uses shared setup and loads cinema schedules
 include("./logics/cinema.php");
 ?>
 <!doctype html>
@@ -55,6 +55,7 @@ include("./logics/cinema.php");
 
                 $current_movie = null;
 
+                // Loop schedules and group by movie
                 while ($schedule = mysqli_fetch_assoc($schedule_query)) {
 
 

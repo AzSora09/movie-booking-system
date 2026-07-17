@@ -1,6 +1,6 @@
 <?php
 include("./required.php");
-// Public home page for the movie booking system
+// Cinemas listing page — loads shared setup and lists cinemas
 ?>
 <!doctype html>
 <html lang="en">
@@ -28,6 +28,7 @@ include("./required.php");
 
                 <?php
 
+                // Search cinemas by name or location when search param present
                 if (isset($_GET["search"]) && $_GET["search"] != "") {
 
                     $search = mysqli_real_escape_string($conn, $_GET["search"]);
@@ -41,6 +42,7 @@ include("./required.php");
                     );
                 } else {
 
+                    // Default: list all cinemas ordered by name
                     $query = mysqli_query(
                         $conn,
                         "SELECT * FROM cinemas
@@ -48,6 +50,7 @@ include("./required.php");
                     );
                 }
 
+                // If no cinemas found, show a message
                 if (mysqli_num_rows($query) == 0) {
                 ?>
 

@@ -5,7 +5,7 @@ session_start();
 // Database connection shared by all admin pages
 $conn = mysqli_connect('localhost', 'root', '', 'movie-booking-system');
 
-// Admin Page validation to keep users out
+// Check that the user is logged in and has admin access
 if (!isset($_SESSION["user_name"])) {
 
     alertjs("Please log in to access the admin panel.");

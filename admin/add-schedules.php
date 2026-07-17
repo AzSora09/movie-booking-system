@@ -1,6 +1,6 @@
 <?php
 include("./adminrequired.php");
-// Load schedule-related helper functions for adding schedules
+// Admin add schedule page — loads schedule helpers for creating shows
 include("./logics/schedules.php");
 ?>
 <!doctype html>

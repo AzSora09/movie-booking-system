@@ -1,6 +1,6 @@
 <?php
 include("./required.php");
-// Public home page for the movie booking system
+// My bookings page — loads shared setup and user's bookings
 include("./logics/my-bookings.php");
 ?>
 <!doctype html>
@@ -31,7 +31,7 @@ include("./logics/my-bookings.php");
 
             <?php if (mysqli_num_rows($booking_query) == 0) { ?>
 
-
+                <!-- Show an empty state when the user has no bookings -->
                 <div class="alert alert-warning">
 
                     You have no bookings yet.
@@ -46,7 +46,8 @@ include("./logics/my-bookings.php");
                 <div class="row g-4">
 
 
-                    <?php while ($booking = mysqli_fetch_assoc($booking_query)) { ?>
+                    <?php // Loop through user's bookings and show details
+                    while ($booking = mysqli_fetch_assoc($booking_query)) { ?>
 
 
                         <div class="col-md-6">

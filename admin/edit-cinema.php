@@ -1,6 +1,6 @@
 <?php
 include("./adminrequired.php");
-// Load cinema-related helper functions for adding cinemas
+// Admin edit cinema — loads cinema helpers and admin checks
 include("./logics/cinemas.php");
 ?>
 <!doctype html>
@@ -21,6 +21,7 @@ include("./logics/cinemas.php");
     <main>
         <div class="container mt-5">
             <h2>Edit Cinema</h2>
+            <!-- Edit cinema form: prefilled with existing cinema details -->
             <?php
                 $result = selectdata("cinemas", $_GET["id"]);
                 $row = mysqli_fetch_assoc($result);
@@ -58,6 +59,7 @@ include("./logics/cinemas.php");
                 </button>
             </form>
             <?php
+                // Process cinema edit submission
                 editcinema($_GET["id"]);
             ?>
         </div>

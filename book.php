@@ -1,6 +1,6 @@
 <?php
 include("./required.php");
-// Public home page for the movie booking system
+// Booking page — loads shared setup and booking logic
 include("./logics/book.php");
 ?>
 <!doctype html>
@@ -23,7 +23,7 @@ include("./logics/book.php");
         <div class="container py-5" style="min-height:70vh;">
 
 
-            <!-- Movie Information -->
+            <!-- Movie information section -->
 
             <div class="card shadow-sm mb-4">
 
@@ -48,7 +48,7 @@ include("./logics/book.php");
 
 
 
-            <!-- Cinema + Schedule Information -->
+            <!-- Cinema and schedule details -->
 
             <div class="card shadow-sm mb-4">
 
@@ -83,7 +83,7 @@ include("./logics/book.php");
 
 
 
-            <!-- Booking Form -->
+            <!-- Booking form section -->
 
             <div class="card shadow-sm">
 
@@ -96,6 +96,7 @@ include("./logics/book.php");
 
 
 
+                    <!-- Booking form with class, ticket count and children count -->
                     <form method="POST">
 
 

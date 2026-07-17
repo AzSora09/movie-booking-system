@@ -2,6 +2,7 @@
 
 require_once "required.php";
 
+// Ensure user is logged in before showing bookings
 if (!isset($_SESSION["user_name"])) {
 
     alertjs("Please login to view your bookings.");
@@ -10,7 +11,7 @@ if (!isset($_SESSION["user_name"])) {
 }
 
 
-// Get current user id
+// Resolve current user id from the session name
 
 $name = explode(" ", $_SESSION["user_name"], 2);
 
@@ -34,7 +35,7 @@ $user_id = $user["id"];
 
 
 
-// Fetch bookings
+// Fetch bookings for current user with related schedule/movie/cinema info
 
 $booking_query = mysqli_query(
     $conn,

@@ -25,6 +25,7 @@ global $conn;
             <h2 class="mb-4">Dashboard</h2>
 
             <!-- Statistics -->
+            <!-- Summary cards showing how many records exist -->
             <div class="row g-3 mb-5">
 
                 <div class="col-md-4 col-lg-2">
@@ -86,6 +87,7 @@ global $conn;
             <!-- Quick Actions -->
             <h4 class="mb-3">Quick Actions</h4>
 
+            <!-- Quick links to the main admin actions -->
             <div class="d-flex gap-3 flex-wrap">
 
                 <a href="add-movie.php" class="btn btn-primary">
@@ -115,6 +117,7 @@ global $conn;
                             <ul class="list-group list-group-flush">
 
                                 <?php
+                                // Show the latest added movies on the dashboard
                                 $movies = mysqli_query($conn, "SELECT title FROM movies ORDER BY id DESC LIMIT 5");
 
                                 while ($movie = mysqli_fetch_assoc($movies)) {
@@ -143,6 +146,7 @@ global $conn;
                             <ul class="list-group list-group-flush">
 
                                 <?php
+                                // Show the latest reviews on the dashboard
                                 $reviews = mysqli_query($conn, "SELECT * FROM reviews ORDER BY id DESC LIMIT 5");
 
                                 if (mysqli_num_rows($reviews) === 0) {

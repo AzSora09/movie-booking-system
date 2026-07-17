@@ -1,7 +1,8 @@
 <?php
 include("./adminrequired.php");
-// Load shared admin utilities and movie data helpers
+// Load shared admin utilities and movie helpers
 include("./logics/movies.php");
+// If admin clicked delete, remove the movie row then reload
 if (isset($_GET["delete-id"])) {
     deletedata("movies", $_GET["delete-id"]);
 }

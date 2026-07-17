@@ -4,6 +4,7 @@ function addcinema()
 {
     global $conn;
     if (isset($_POST["submit"])) {
+        // Collect cinema form values and insert a new record
 
         // Sanitize form inputs for cinema name and location
         $name = mysqli_real_escape_string($conn, $_POST["name"]);
@@ -25,6 +26,7 @@ function editcinema($id)
 {
     global $conn;
     if (isset($_POST["submit"])) {
+        // Update the selected cinema using the posted values
 
         // Sanitize form inputs for cinema name and location
         $name = mysqli_real_escape_string($conn, $_POST["name"]);

@@ -4,6 +4,7 @@ function addschedule()
     global $conn;
 
     if (isset($_POST['submit'])) {
+        // Read the form values for movie, cinema, date, time and prices
         $movie_id = $_POST['movie'];
         $cinema_id = $_POST['cinema'];
         $date = $_POST['date'];
@@ -30,6 +31,7 @@ function editschedule()
     global $conn;
 
     if (isset($_POST['submit'])) {
+        // Update the selected schedule with the new values
         $schedule_id = $_GET['id'];
         $movie_id = $_POST['movie'];
         $cinema_id = $_POST['cinema'];

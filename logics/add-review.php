@@ -1,5 +1,5 @@
 <?php
-
+// Handles adding a review: checks login, validates input, inserts into DB
 global $conn;
 
 if (!isset($_SESSION["user_name"])) {
@@ -10,6 +10,7 @@ if (!isset($_SESSION["user_name"])) {
 
 
 
+// Ensure a movie id was provided in the URL
 if (!isset($_GET["movie"])) {
 
     redirect("./movies.php");
@@ -45,7 +46,7 @@ $movie = mysqli_fetch_assoc($movie_query);
 
 
 // Submit review
-
+// Handle form submission for a new review
 if (isset($_POST["submit"])) {
 
 

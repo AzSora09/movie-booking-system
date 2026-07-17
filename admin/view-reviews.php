@@ -1,6 +1,7 @@
 <?php
 include("./adminrequired.php");
-// Load shared admin utilities and movie data helpers
+// Load shared admin utilities and review helpers
+// Admin can delete a review via ?delete-id=; perform deletion here
 if(isset($_GET["delete-id"])) {
     $id = $_GET["delete-id"];
     deletedata("reviews", $id);
@@ -34,7 +35,7 @@ if(isset($_GET["delete-id"])) {
                             <th scope="col">Movie</th>
                             <th scope="col">Rating</th>
                             <th scope="col">Comment</th>
-                            <th scope="col">Review date</th>
+                            <th scope="col">Review Date and Time</th>
                             <th scope="col">Actions</th>
                         </tr>
                     </thead>
@@ -48,17 +49,11 @@ if(isset($_GET["delete-id"])) {
                         ?>
                             <tr>
                                 <td scope="row"><?php echo $row["id"] ?></td>
-                                <td><?php echo getvalue("accounts", "first_name, last_name", $row["user_id"]) ?></td>
+                                <td><?php echo getvalue("accounts", "first_name", $row["user_id"])?> <?php echo getvalue("accounts", "last_name", $row["user_id"])?></td>
                                 <td><?php echo getvalue("movies", "title", $row["movie_id"]) ?></td>
                                 <td><?php echo $row["rating"] ?>/5</td>
                                 <td><?php echo $row["comment"] ?></td>
-                                <td><?php echo $row["review_date"] ?></td>
-                                <td>
-                                    <img src="../images/<?php echo $row["poster"] ?>" alt="" class="img-fluid">
-                                </td>
-                                <td>
-                                    <iframe src="https://www.youtube.com/embed/<?php echo $row["trailer"] ?>" frameborder="0" allowfullscreen></iframe>
-                                </td>
+                                <td><?php echo $row["review_datetime"] ?></td>
                                 <td>
                                     <a class="btn btn-danger" href="?delete-id=<?php echo $row["id"] ?>">Delete</a>
                                 </td>

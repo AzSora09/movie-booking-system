@@ -1,72 +1,151 @@
 <?php
 include("./required.php");
-// Show registration page and process registration submissions
+// Registration page — uses shared setup and runs register helper
 register();
 ?>
 <!doctype html>
 <html lang="en">
 
 <head>
-    <?php
-    head("Register");
-    ?>
+
+    <?php head("Register"); ?>
+
+    <link rel="stylesheet" href="./css/auth.css">
+
 </head>
 
-<body>
-    <div class="container-fluid">
-        <div class="container mx-auto my-5">
-            <form action="" method="post">
-                <div class="mb-3">
+<body class="auth-body">
+
+<div class="container">
+
+    <div class="auth-card shadow">
+
+        <h2 class="text-center mb-2">
+
+            Create Account
+
+        </h2>
+
+        <p class="text-center text-muted mb-4">
+
+            Join ShowRadar to book your favourite movies
+
+        </p>
+
+        <!-- Registration form for new users -->
+        <form method="post">
+
+
+            <div class="row">
+
+                <div class="col-md-6 mb-3">
+
+                    <label class="form-label">
+
+                        First Name
+
+                    </label>
+
                     <input
                         type="text"
+                        class="form-control"
                         name="f-name"
-                        id=""
-                        class="form-control d-inline w-25 mx-auto"
                         placeholder="First Name"
-                        aria-describedby="helpId" />
+                        required>
+
+                </div>
+
+
+                <div class="col-md-6 mb-3">
+
+                    <label class="form-label">
+
+                        Last Name
+
+                    </label>
+
                     <input
                         type="text"
+                        class="form-control"
                         name="l-name"
-                        id=""
-                        class="form-control d-inline w-25 mx-auto"
-                        placeholder="First Name"
-                        aria-describedby="helpId" />
+                        placeholder="Last Name"
+                        required>
+
                 </div>
 
-                <div class="mb-3">
-                    <input
-                        type="email"
-                        class="form-control w-50"
-                        name="email"
-                        id=""
-                        aria-describedby="emailHelpId"
-                        placeholder="E-Mail" />
-                </div>
+            </div>
 
-                <div class="mb-3">
-                    <input
-                        type="password"
-                        class="form-control w-50"
-                        name="pass"
-                        id=""
-                        placeholder="Password" />
-                </div>
 
-                <button
-                    type="submit"
-                    name="submit"
-                    class="btn btn-primary">
-                    Register Account
-                </button>
-                <span class="ms-1">
-                    Already have an account? <a href="./login.php">Log in</a>
-                </span>
-            </form>
-        </div>
+
+            <div class="mb-3">
+
+                <label class="form-label">
+
+                    Email Address
+
+                </label>
+
+                <input
+                    type="email"
+                    class="form-control"
+                    name="email"
+                    placeholder="Enter your email"
+                    required>
+
+            </div>
+
+
+
+            <div class="mb-4">
+
+                <label class="form-label">
+
+                    Password
+
+                </label>
+
+                <input
+                    type="password"
+                    class="form-control"
+                    name="pass"
+                    placeholder="Create a password"
+                    required>
+
+            </div>
+
+
+
+            <button
+                type="submit"
+                name="submit"
+                class="btn btn-danger w-100">
+
+                Register Account
+
+            </button>
+
+
+
+            <p class="text-center mt-4 mb-0">
+
+                Already have an account?
+
+                <a href="./login.php">
+
+                    Log In
+
+                </a>
+
+            </p>
+
+        </form>
+
     </div>
 
-    <!-- Bootstrap JS -->
-    <script src="./bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
+</div>
+
+<script src="./bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
+
 </body>
 
 </html>

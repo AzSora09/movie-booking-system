@@ -1,7 +1,8 @@
 <?php
 include("./adminrequired.php");
-// Load shared admin utilities and movie data helpers
+// Load shared admin utilities and schedule helpers
 include("./logics/schedules.php");
+// Admin delete schedule handler (removes by id)
 if (isset($_GET["delete-id"])) {
     deletedata("schedules", $_GET["delete-id"]);
 }

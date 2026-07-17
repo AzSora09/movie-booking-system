@@ -1,6 +1,6 @@
 <?php
 include("./required.php");
-// Public home page for the movie booking system
+// Movies listing page — loads shared setup and shows available movies
 ?>
 <!doctype html>
 <html lang="en">
@@ -29,7 +29,7 @@ include("./required.php");
             <div class="row g-4">
 
                 <?php
-
+                // If there is a search query, sanitize and search titles
                 if (isset($_GET["search"]) && $_GET["search"] != "") {
 
                     $search = mysqli_real_escape_string($conn, $_GET["search"]);
@@ -41,6 +41,7 @@ include("./required.php");
                         ORDER BY title"
                     );
 
+                    // Show friendly message when no results
                     if (mysqli_num_rows($query) == 0) { ?>
 
                         <div class="d-flex flex-column justify-content-center align-items-center text-center py-5" style="min-height: 60vh;">
@@ -61,6 +62,7 @@ include("./required.php");
 
                 } else {
 
+                    // Default: get all movies ordered by title
                     $query = mysqli_query(
                         $conn,
                         "SELECT * FROM movies
@@ -68,6 +70,7 @@ include("./required.php");
                     );
                 }
 
+                // Render movie cards from query results
                 while ($movie = mysqli_fetch_assoc($query)) {
                     ?>
 

@@ -21,6 +21,7 @@ include("./logics/schedules.php");
     <main>
         <div class="container mt-5">
             <h2>Edit Schedule</h2>
+            <!-- Edit schedule form: choose movie, cinema, date/time and prices -->
             <?php
             $result = selectdata("schedules");
             $row = mysqli_fetch_assoc($result);
@@ -103,7 +104,10 @@ include("./logics/schedules.php");
                 </button>
 
             </form>
-            <?php editschedule(); ?>
+            <?php
+                // Process schedule edit when form is submitted
+                editschedule();
+            ?>
         </div>
     </main>
 

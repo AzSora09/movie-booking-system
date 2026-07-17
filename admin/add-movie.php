@@ -1,6 +1,6 @@
 <?php
 include("./adminrequired.php");
-// Load movie-related helper functions for adding movies
+// Admin add movie — loads admin checks and movie helpers
 include("./logics/movies.php")
 ?>
 <!doctype html>
@@ -21,6 +21,7 @@ include("./logics/movies.php")
     <main>
         <div class="container mt-5">
             <h2>Add Movie</h2>
+            <!-- Form to add a movie (fields correspond to movies table columns) -->
             <form action="" method="post" enctype="multipart/form-data">
 
                 <div class="mb-3">
@@ -134,6 +135,7 @@ include("./logics/movies.php")
                 </button>
             </form>
             <?php
+                // Process add movie submission (handles upload + insert)
                 addmovie();
             ?>
         </div>

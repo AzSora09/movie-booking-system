@@ -1,5 +1,5 @@
 <?php
-// Start session support for user login and role tracking
+// Starts session and sets up DB connection for the application
 session_start();
 
 // Create a reusable database connection for the application

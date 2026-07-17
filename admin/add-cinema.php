@@ -1,6 +1,7 @@
 <?php
+// Import shared functions and database connection for admin pages
 include("./adminrequired.php");
-// Load cinema-related helper functions for adding cinemas
+// Import file that contains cinema related functions
 include("./logics/cinemas.php");
 ?>
 <!doctype html>
@@ -8,19 +9,24 @@ include("./logics/cinemas.php");
 
 <head>
     <?php
+    // Use the shared head function to set the page title and include required assets
     head("Add Cinema");
     ?>
 </head>
 
 <body>
     <?php
+    // Navbar
     navbar();
     ?>
 
 
+    // Start of the main content
     <main>
         <div class="container mt-5">
             <h2>Add Cinema</h2>
+
+            // Start of the form to add a new cinema
             <form action="" method="post">
 
                 <div class="mb-3">
@@ -55,6 +61,7 @@ include("./logics/cinemas.php");
                 </button>
             </form>
             <?php
+                // Function to add cinema to the database when the form is submitted
                 addcinema();
             ?>
         </div>

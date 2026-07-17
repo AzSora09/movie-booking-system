@@ -1,7 +1,8 @@
 <?php
 include("./adminrequired.php");
-// Load shared admin utilities and cinema data helpers
+// Load shared admin utilities and cinema helpers
 include("./logics/cinemas.php");
+// Handle delete action from admin UI
 if(isset($_GET["delete-id"])) {
     deletedata("cinemas", $_GET["delete-id"]);
 }

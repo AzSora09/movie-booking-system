@@ -4,6 +4,7 @@ function addmovie()
 {
     global $conn;
     if (isset($_POST["submit"])) {
+        // Collect movie form values and clean them before saving
 
         // Sanitize and collect form inputs
         $name = mysqli_real_escape_string($conn, $_POST["name"]);
@@ -34,6 +35,7 @@ function editmovie($id)
 {
     global $conn;
     if (isset($_POST["submit"])) {
+        // Update an existing movie record with posted values
 
         // Sanitize and collect form inputs
         $name = mysqli_real_escape_string($conn, $_POST["name"]);

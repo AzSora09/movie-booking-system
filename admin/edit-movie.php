@@ -1,6 +1,6 @@
 <?php
 include("./adminrequired.php");
-// Load movie-related helper functions for adding movies
+// Admin edit movie — loads movie helpers and admin checks
 include("./logics/movies.php");
 ?>
 <!doctype html>
@@ -21,6 +21,7 @@ include("./logics/movies.php");
     <main>
         <div class="container mt-5">
             <h2>Edit Movie</h2>
+            <!-- Edit form: fields are prefilled; submit updates the movie -->
             <?php
             $result = selectdata("movies", $_GET["id"]);
             $row = mysqli_fetch_assoc($result);
@@ -138,6 +139,7 @@ include("./logics/movies.php");
                 </button>
             </form>
             <?php
+                // Process edit submission and update the movie record
                 editmovie($_GET["id"]);
             ?>
         </div>

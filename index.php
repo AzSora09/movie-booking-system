@@ -1,6 +1,6 @@
 <?php
 include("./required.php");
-// Public home page for the movie booking system
+// Main public homepage — loads shared setup and site navigation
 ?>
 <!doctype html>
 <html lang="en">
@@ -22,7 +22,7 @@ include("./required.php");
     <main>
         <div class="container my-5" style="min-height: 70vh;">
 
-            <!-- Hero -->
+            <!-- Hero section with main call-to-action buttons -->
             <div class="p-5 mb-5 bg-light rounded-3 text-center">
                 <h1 class="display-5 fw-bold">Book Your Next Movie Experience</h1>
 
@@ -39,7 +39,7 @@ include("./required.php");
                 </a>
             </div>
 
-            <!-- Movies -->
+            <!-- Show a few latest movies on the homepage -->
             <div class="d-flex justify-content-between align-items-center mb-3">
                 <h2>Now Showing</h2>
 
@@ -51,6 +51,7 @@ include("./required.php");
             <div class="row g-4 mb-5">
 
                 <?php
+                // Pull a small list of recent movies for the homepage
                 $movies = mysqli_query($conn, "SELECT * FROM movies ORDER BY id DESC LIMIT 4");
 
                 while ($movie = mysqli_fetch_assoc($movies)) {
@@ -95,7 +96,7 @@ include("./required.php");
 
             </div>
 
-            <!-- Cinemas -->
+            <!-- Show a few cinemas on the homepage -->
             <div class="d-flex justify-content-between align-items-center mb-3">
                 <h2>Our Cinemas</h2>
 
@@ -107,6 +108,7 @@ include("./required.php");
             <div class="row g-4">
 
                 <?php
+                // Pull a small list of cinemas for the homepage
                 $cinemas = mysqli_query($conn, "SELECT * FROM cinemas LIMIT 4");
 
                 while ($cinema = mysqli_fetch_assoc($cinemas)) {

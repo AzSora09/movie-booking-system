@@ -1,6 +1,7 @@
 <?php
 global $conn;
 
+// Validate cinema id parameter; redirect to list when missing
 if (!isset($_GET["id"])) {
     redirect("./cinemas.php");
 }
@@ -22,6 +23,7 @@ $cinema = mysqli_fetch_assoc($cinema_query);
 
 
 
+// Fetch schedules for this cinema (grouped by movie then date/time)
 $schedule_query = mysqli_query(
     $conn,
     "SELECT *

@@ -36,7 +36,7 @@ include("./adminrequired.php");
                     <tbody>
 
                         <?php
-                        // Fetch all reviews and render each row in the table
+                        // Fetch all users and render each row in the table
                         $result = selectdata("accounts");
                         while ($row = mysqli_fetch_assoc($result)) {
                         ?>
