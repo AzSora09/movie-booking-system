@@ -18,90 +18,89 @@ include("./required.php");
 
 <body class="auth-body">
 
-<div class="container">
+    <main>
 
-    <div class="auth-card shadow">
+        <div class="container d-flex align-items-center justify-content-center" style="min-height:85vh;">
 
-        <h2 class="text-center mb-2">
-            Welcome Back
-        </h2>
+            <div class="auth-card shadow">
 
-        <p class="text-center text-muted mb-4">
-            Log in to your ShowRadar account
-        </p>
+                <h2 class="text-center mb-2">
+                    Welcome Back
+                </h2>
 
-        <!-- Login form for existing users -->
-        <form method="post">
+                <p class="text-center auth-subtitle mb-4">
+                    Log in to your ShowRadar account
+                </p>
 
-            <div class="mb-3">
+                <!-- Login form for existing users -->
+                <form method="post">
 
-                <label class="form-label">
-                    Email Address
-                </label>
+                    <div class="mb-3">
 
-                <input
-                    type="email"
-                    class="form-control"
-                    name="email"
-                    placeholder="Enter your email"
-                    required>
+                        <label class="form-label">
+                            Email Address
+                        </label>
+
+                        <input
+                            type="email"
+                            class="form-control"
+                            name="email"
+                            placeholder="Enter your email"
+                            required>
+
+                    </div>
+
+                    <div class="mb-4">
+
+                        <label class="form-label">
+                            Password
+                        </label>
+
+                        <input
+                            type="password"
+                            class="form-control"
+                            name="pass"
+                            placeholder="Enter your password"
+                            required>
+
+                    </div>
+
+                    <button
+                        type="submit"
+                        name="submit"
+                        class="btn btn-danger w-100">
+
+                        Log In
+
+                    </button>
+
+                    <p class="text-center auth-footer mt-4 mb-0">
+
+                        Don't have an account?
+
+                        <a href="./register.php">
+
+                            Register
+
+                        </a>
+
+                    </p>
+
+                </form>
+
+                <?php
+                // Function to login when login form is submitted
+                login();
+                ?>
 
             </div>
 
+        </div>
 
+    </main>
 
-            <div class="mb-4">
-
-                <label class="form-label">
-                    Password
-                </label>
-
-                <input
-                    type="password"
-                    class="form-control"
-                    name="pass"
-                    placeholder="Enter your password"
-                    required>
-
-            </div>
-
-
-
-            <button
-                type="submit"
-                name="submit"
-                class="btn btn-danger w-100">
-
-                Log In
-
-            </button>
-
-
-
-            <p class="text-center mt-4 mb-0">
-
-                Don't have an account?
-
-                <a href="./register.php">
-
-                    Register
-
-                </a>
-
-            </p>
-
-        </form>
-
-        <?php
-        // Function to login when login form is submitted
-        login();
-        ?>
-
-    </div>
-
-</div>
-
-<script src="./bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="./bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
 
 </body>
 

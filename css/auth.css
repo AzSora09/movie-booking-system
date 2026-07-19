@@ -1,41 +1,199 @@
-/* Styles for login and registration pages */
+/* ===========================
+   Authentication Page Styles
+   =========================== */
 
+/* Full page background */
 .auth-body {
 
-    background: #f5f5f5;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 0;
+    padding: 30px;
+
+    background:
+        radial-gradient(circle at top left, #6d28d9 0%, transparent 35%),
+        radial-gradient(circle at bottom right, #7c3aed 0%, transparent 30%),
+        linear-gradient(135deg, #111827, #1f2937);
+
+    font-family: "Segoe UI", sans-serif;
 
 }
 
 
-/* Main card containing authentication form */
+/* Authentication card */
 .auth-card {
 
-    max-width: 450px;
+    width: 100%;
+    max-width: 500px;
 
-    margin: 80px auto;
+    padding: 45px;
 
-    background: white;
+    background: rgba(30, 30, 45, 0.92);
 
-    padding: 40px;
+    border: 1px solid rgba(255,255,255,0.08);
 
-    border-radius: 15px;
+    border-radius: 20px;
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.45),
+        0 0 35px rgba(139,92,246,.18);
+
+    backdrop-filter: blur(15px);
 
 }
 
 
-/* Style page heading inside authentication card */
+/* Main heading */
 .auth-card h2 {
+
+    color: white;
 
     font-weight: 700;
 
+    letter-spacing: .5px;
+
 }
 
 
-/* Adjust authentication button size */
+/* Subtitle text */
+.auth-subtitle,
+.auth-card p {
+
+    color: #b9b9cf;
+
+}
+
+
+/* Form labels */
+.auth-card .form-label {
+
+    color: #e5e7eb;
+
+    font-weight: 600;
+
+    margin-bottom: 8px;
+
+}
+
+
+/* Textboxes */
+.auth-card .form-control {
+
+    background: #2b2d42;
+
+    border: 1px solid #444;
+
+    color: white;
+
+    padding: 12px 15px;
+
+    border-radius: 10px;
+
+    transition: .25s;
+
+}
+
+
+/* Placeholder text */
+.auth-card .form-control::placeholder {
+
+    color: #8b8da7;
+
+}
+
+
+/* Focus effect */
+.auth-card .form-control:focus {
+
+    background: #32354d;
+
+    color: white;
+
+    border-color: #8b5cf6;
+
+    box-shadow: 0 0 0 .2rem rgba(139,92,246,.25);
+
+}
+
+
+/* Authentication button */
 .auth-card .btn {
 
-    padding: 10px;
+    background: linear-gradient(135deg,#8b5cf6,#7c3aed);
 
-    font-size: 18px;
+    border: none;
+
+    padding: 13px;
+
+    font-size: 17px;
+
+    font-weight: 600;
+
+    border-radius: 10px;
+
+    transition: .25s;
+
+}
+
+
+/* Button hover effect */
+.auth-card .btn:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 10px 20px rgba(139,92,246,.35);
+
+    background: linear-gradient(135deg,#9f67ff,#8b5cf6);
+
+}
+
+
+/* Footer text */
+.auth-footer,
+.auth-card p:last-child {
+
+    color: #b9b9cf;
+
+}
+
+
+/* Footer links */
+.auth-footer a,
+.auth-card a {
+
+    color: #b388ff;
+
+    text-decoration: none;
+
+    font-weight: 600;
+
+    transition: .25s;
+
+}
+
+
+/* Footer link hover */
+.auth-footer a:hover,
+.auth-card a:hover {
+
+    color: #d8b4fe;
+
+}
+
+
+/* Smaller screens */
+@media (max-width:576px){
+
+    .auth-card{
+
+        padding:30px;
+
+        border-radius:16px;
+
+    }
 
 }

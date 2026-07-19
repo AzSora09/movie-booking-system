@@ -1,0 +1,98 @@
+/* Global dark theme for the entire website */
+body{
+    background:#121212;
+    color:#e5e5e5;
+}
+
+
+/* Custom purple navigation bar */
+.navbar-custom{
+    background:#5b21b6;
+}
+
+
+/* Navbar brand and links */
+.navbar-custom .navbar-brand,
+.navbar-custom .nav-link{
+    color:white;
+}
+
+
+/* Navbar link hover effect */
+.navbar-custom .nav-link:hover{
+    color:#d8b4fe;
+}
+
+
+/* Shared card styling used throughout the website */
+.card{
+    background:#1e1e1e;
+    color:white;
+    border:1px solid #333;
+    transition:.25s;
+}
+
+
+/* Slight lift animation when hovering over cards */
+.card:hover{
+    transform:translateY(-5px);
+}
+
+
+/* Dark input fields and dropdowns */
+.form-control,
+.form-select{
+    background:#2a2a2a;
+    color:white;
+    border-color:#555;
+}
+
+
+/* Keep dark appearance when inputs are focused */
+.form-control:focus,
+.form-select:focus{
+    background:#2a2a2a;
+    color:white;
+    border-color:#7c3aed;
+    box-shadow:0 0 0 .2rem rgba(124,58,237,.25);
+}
+
+
+/* Fix placeholder text visibility */
+.form-control::placeholder{
+    color:#999;
+}
+
+
+/* Primary action button */
+.btn-danger{
+    background:#7c3aed;
+    border:none;
+}
+
+
+/* Primary button hover effect */
+.btn-danger:hover{
+    background:#6d28d9;
+}
+
+
+/* Secondary outline button */
+.btn-outline-danger{
+    border-color:#7c3aed;
+    color:#c084fc;
+}
+
+
+/* Outline button hover effect */
+.btn-outline-danger:hover{
+    background:#7c3aed;
+    color:white;
+}
+
+
+/* Footer styling */
+footer{
+    background:#181818;
+    color:#aaa;
+}

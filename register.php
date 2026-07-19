@@ -7,7 +7,10 @@ include("./required.php");
 
 <head>
 
-    <?php head("Register"); ?>
+    <?php
+    // Use head function to add title and required assets for the page
+    head("Register");
+    ?>
 
     <link rel="stylesheet" href="./css/auth.css">
 
@@ -15,138 +18,134 @@ include("./required.php");
 
 <body class="auth-body">
 
-    <div class="container">
+    <main>
 
-        <div class="auth-card shadow">
+        <div class="container d-flex align-items-center justify-content-center" style="min-height:85vh;">
 
-            <h2 class="text-center mb-2">
+            <div class="auth-card shadow">
 
-                Create Account
+                <h2 class="text-center mb-2">
 
-            </h2>
+                    Create Your Account
 
-            <p class="text-center text-muted mb-4">
+                </h2>
 
-                Join ShowRadar to book your favourite movies
+                <p class="text-center auth-subtitle mb-4">
 
-            </p>
-
-            <!-- Registration form for new users -->
-            <form method="post">
-
-
-                <div class="row">
-
-                    <div class="col-md-6 mb-3">
-
-                        <label class="form-label">
-
-                            First Name
-
-                        </label>
-
-                        <input
-                            type="text"
-                            class="form-control"
-                            name="f-name"
-                            placeholder="First Name"
-                            required>
-
-                    </div>
-
-
-                    <div class="col-md-6 mb-3">
-
-                        <label class="form-label">
-
-                            Last Name
-
-                        </label>
-
-                        <input
-                            type="text"
-                            class="form-control"
-                            name="l-name"
-                            placeholder="Last Name"
-                            required>
-
-                    </div>
-
-                </div>
-
-
-
-                <div class="mb-3">
-
-                    <label class="form-label">
-
-                        Email Address
-
-                    </label>
-
-                    <input
-                        type="email"
-                        class="form-control"
-                        name="email"
-                        placeholder="Enter your email"
-                        required>
-
-                </div>
-
-
-
-                <div class="mb-4">
-
-                    <label class="form-label">
-
-                        Password
-
-                    </label>
-
-                    <input
-                        type="password"
-                        class="form-control"
-                        name="pass"
-                        placeholder="Create a password"
-                        required>
-
-                </div>
-
-
-
-                <button
-                    type="submit"
-                    name="submit"
-                    class="btn btn-danger w-100">
-
-                    Register Account
-
-                </button>
-
-
-
-                <p class="text-center mt-4 mb-0">
-
-                    Already have an account?
-
-                    <a href="./login.php">
-
-                        Log In
-
-                    </a>
+                    Join ShowRadar to book your favourite movies
 
                 </p>
 
-            </form>
+                <!-- Registration form for new users -->
+                <form method="post">
 
-            <?php
-            // Function to register account when form is submitted
-            register();
-            ?>
+                    <div class="row">
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label">
+
+                                First Name
+
+                            </label>
+
+                            <input
+                                type="text"
+                                class="form-control"
+                                name="f-name"
+                                placeholder="First Name"
+                                required>
+
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label">
+
+                                Last Name
+
+                            </label>
+
+                            <input
+                                type="text"
+                                class="form-control"
+                                name="l-name"
+                                placeholder="Last Name"
+                                required>
+
+                        </div>
+
+                    </div>
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+
+                            Email Address
+
+                        </label>
+
+                        <input
+                            type="email"
+                            class="form-control"
+                            name="email"
+                            placeholder="Enter your email"
+                            required>
+
+                    </div>
+
+                    <div class="mb-4">
+
+                        <label class="form-label">
+
+                            Password
+
+                        </label>
+
+                        <input
+                            type="password"
+                            class="form-control"
+                            name="pass"
+                            placeholder="Create a password"
+                            required>
+
+                    </div>
+
+                    <button
+                        type="submit"
+                        name="submit"
+                        class="btn btn-danger w-100">
+
+                        Register Account
+
+                    </button>
+
+                    <p class="text-center auth-footer mt-4 mb-0">
+
+                        Already have an account?
+
+                        <a href="./login.php">
+
+                            Log In
+
+                        </a>
+
+                    </p>
+
+                </form>
+
+                <?php
+                // Function to register account when form is submitted
+                register();
+                ?>
+
+            </div>
+
         </div>
 
-    </div>
+    </main>
 
+    <!-- Bootstrap JS -->
     <script src="./bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
 
 </body>

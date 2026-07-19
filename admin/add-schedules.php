@@ -36,7 +36,7 @@ include("./logics/schedules.php");
 
                     <label class="form-label">Select Movie</label>
 
-                    <select class="form-control" name="movie">
+                    <select class="form-control" name="movie" required>
 
                         <?php
                         // Fetch all movies from the database
@@ -57,7 +57,7 @@ include("./logics/schedules.php");
 
                     <label class="form-label">Select Cinema</label>
 
-                    <select class="form-control" name="cinema">
+                    <select class="form-control" name="cinema" required>
 
                         <?php
                         // Fetch all cinemas from the database
@@ -81,7 +81,8 @@ include("./logics/schedules.php");
                     <input
                         type="date"
                         name="date"
-                        class="form-control">
+                        class="form-control"
+                        required>
 
                 </div>
 
@@ -94,7 +95,8 @@ include("./logics/schedules.php");
                     <input
                         type="time"
                         name="time"
-                        class="form-control">
+                        class="form-control"
+                        required>
 
                 </div>
 
@@ -126,21 +128,24 @@ include("./logics/schedules.php");
                                     <input
                                         type="number"
                                         name="b_price"
-                                        class="form-control">
+                                        class="form-control"
+                                        required>
                                 </td>
 
                                 <td>
                                     <input
                                         type="number"
                                         name="g_price"
-                                        class="form-control">
+                                        class="form-control"
+                                        required>
                                 </td>
 
                                 <td>
                                     <input
                                         type="number"
                                         name="p_price"
-                                        class="form-control">
+                                        class="form-control"
+                                        required>
                                 </td>
 
                             </tr>

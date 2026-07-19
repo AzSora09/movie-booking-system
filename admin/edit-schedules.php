@@ -42,7 +42,7 @@ include("./logics/schedules.php");
 
                     <label class="form-label">Select Movie</label>
 
-                    <select class="form-control" name="movie">
+                    <select class="form-control" name="movie" required>
 
                         <?php
                         // Display the selected movie
@@ -73,7 +73,7 @@ include("./logics/schedules.php");
 
                     <label class="form-label">Select Cinema</label>
 
-                    <select class="form-control" name="cinema">
+                    <select class="form-control" name="cinema" required>
 
                         <?php
                         // Display the selected cinema
@@ -108,7 +108,8 @@ include("./logics/schedules.php");
                         type="date"
                         name="date"
                         class="form-control"
-                        value="<?php echo $row['date']; ?>">
+                        value="<?php echo $row['date']; ?>"
+                        required>
 
                 </div>
 
@@ -122,7 +123,8 @@ include("./logics/schedules.php");
                         type="time"
                         name="time"
                         class="form-control"
-                        value="<?php echo $row['time']; ?>">
+                        value="<?php echo $row['time']; ?>"
+                        required>
 
                 </div>
 
@@ -155,7 +157,8 @@ include("./logics/schedules.php");
                                         type="number"
                                         name="b_price"
                                         class="form-control"
-                                        value="<?php echo $row['box_price']; ?>">
+                                        value="<?php echo $row['box_price']; ?>"
+                                        required>
                                 </td>
 
                                 <td>
@@ -163,7 +166,8 @@ include("./logics/schedules.php");
                                         type="number"
                                         name="g_price"
                                         class="form-control"
-                                        value="<?php echo $row['gold_price']; ?>">
+                                        value="<?php echo $row['gold_price']; ?>"
+                                        required>
                                 </td>
 
                                 <td>
@@ -171,7 +175,8 @@ include("./logics/schedules.php");
                                         type="number"
                                         name="p_price"
                                         class="form-control"
-                                        value="<?php echo $row['platinum_price']; ?>">
+                                        value="<?php echo $row['platinum_price']; ?>"
+                                        required>
                                 </td>
 
                             </tr>

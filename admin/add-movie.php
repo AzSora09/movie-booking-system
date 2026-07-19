@@ -37,7 +37,8 @@ include("./logics/movies.php");
                     <input
                         type="text"
                         name="name"
-                        class="form-control" />
+                        class="form-control"
+                        required />
                 </div>
 
                 <!-- Input field for movie description -->
@@ -47,7 +48,8 @@ include("./logics/movies.php");
                         name="desc"
                         class="form-control"
                         rows="6"
-                        maxlength="2000"></textarea>
+                        maxlength="2000"
+                        required></textarea>
                 </div>
 
                 <!-- Input field for movie genre -->
@@ -56,7 +58,8 @@ include("./logics/movies.php");
                     <input
                         type="text"
                         name="genre"
-                        class="form-control" />
+                        class="form-control"
+                        required />
                 </div>
 
                 <!-- Input fields for movie duration -->
@@ -69,7 +72,8 @@ include("./logics/movies.php");
                             type="number"
                             name="dur_hr"
                             class="form-control d-inline"
-                            style="width: 3vw" />
+                            style="width: 3vw"
+                            required />
 
                         hr
 
@@ -77,7 +81,8 @@ include("./logics/movies.php");
                             type="number"
                             name="dur_min"
                             class="form-control d-inline"
-                            style="width: 3vw" />
+                            style="width: 3vw"
+                            required />
 
                         min
 
@@ -90,7 +95,8 @@ include("./logics/movies.php");
                     <input
                         type="text"
                         name="lang"
-                        class="form-control" />
+                        class="form-control"
+                        required />
                 </div>
 
                 <!-- Input field for movie age rating -->
@@ -99,7 +105,8 @@ include("./logics/movies.php");
                     <input
                         type="text"
                         name="age"
-                        class="form-control" />
+                        class="form-control"
+                        required />
                 </div>
 
                 <!-- Input field for movie poster -->
@@ -108,7 +115,8 @@ include("./logics/movies.php");
                     <input
                         type="file"
                         name="poster"
-                        class="form-control" />
+                        class="form-control"
+                        required />
                 </div>
 
                 <!-- Input field for movie trailer -->
@@ -117,7 +125,8 @@ include("./logics/movies.php");
                     <input
                         type="text"
                         name="trailer"
-                        class="form-control" />
+                        class="form-control"
+                        required />
                 </div>
 
                 <!-- Submit button to add movie -->

@@ -46,7 +46,8 @@ include("./logics/cinemas.php");
                         type="text"
                         name="name"
                         value="<?php echo $row["name"] ?>"
-                        class="form-control" />
+                        class="form-control"
+                        required />
 
                 </div>
 
@@ -60,7 +61,8 @@ include("./logics/cinemas.php");
                         name="location"
                         class="form-control"
                         rows="2"
-                        maxlength="255"><?php echo $row["location"] ?></textarea>
+                        maxlength="255"
+                        required><?php echo $row["location"] ?></textarea>
 
                 </div>
 

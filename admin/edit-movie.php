@@ -46,7 +46,8 @@ include("./logics/movies.php");
                         type="text"
                         name="name"
                         value="<?php echo $row["title"]; ?>"
-                        class="form-control" />
+                        class="form-control"
+                        required />
 
                 </div>
 
@@ -60,7 +61,8 @@ include("./logics/movies.php");
                         name="desc"
                         class="form-control"
                         rows="6"
-                        maxlength="2000"><?php echo $row["description"]; ?></textarea>
+                        maxlength="2000"
+                        required><?php echo $row["description"]; ?></textarea>
 
                 </div>
 
@@ -74,7 +76,8 @@ include("./logics/movies.php");
                         type="text"
                         name="genre"
                         value="<?php echo $row["genre"]; ?>"
-                        class="form-control" />
+                        class="form-control"
+                        required />
 
                 </div>
 
@@ -91,7 +94,8 @@ include("./logics/movies.php");
                             name="dur_hr"
                             value="<?php echo explode(' ', $row["duration"])[0]; ?>"
                             class="form-control d-inline"
-                            style="width: 3vw" />
+                            style="width: 3vw"
+                            required />
 
                         hr
 
@@ -100,7 +104,8 @@ include("./logics/movies.php");
                             name="dur_min"
                             value="<?php echo explode(' ', $row["duration"])[2]; ?>"
                             class="form-control d-inline"
-                            style="width: 3vw" />
+                            style="width: 3vw"
+                            required />
 
                         min
 
@@ -118,7 +123,8 @@ include("./logics/movies.php");
                         type="text"
                         name="lang"
                         value="<?php echo $row["language"]; ?>"
-                        class="form-control" />
+                        class="form-control"
+                        required />
 
                 </div>
 
@@ -132,7 +138,8 @@ include("./logics/movies.php");
                         type="text"
                         name="age"
                         value="<?php echo $row["age_rating"]; ?>"
-                        class="form-control" />
+                        class="form-control"
+                        required />
 
                 </div>
 
@@ -159,7 +166,8 @@ include("./logics/movies.php");
                         type="text"
                         name="trailer"
                         value="https://www.youtube.com/watch?v=<?php echo $row["trailer"]; ?>"
-                        class="form-control" />
+                        class="form-control"
+                        required />
 
                 </div>
 

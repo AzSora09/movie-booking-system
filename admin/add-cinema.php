@@ -37,7 +37,8 @@ include("./logics/cinemas.php");
                         id=""
                         class="form-control"
                         placeholder=""
-                        aria-describedby="helpId" />
+                        aria-describedby="helpId"
+                        required />
                 </div>
 
                 <!-- Input field for cinema location -->
@@ -51,7 +52,8 @@ include("./logics/cinemas.php");
                         rows="2"
                         maxlength="255"
                         placeholder=""
-                        aria-describedby="helpId"></textarea>
+                        aria-describedby="helpId"
+                        required></textarea>
                 </div>
 
                 <!-- Submit button to add cinema -->

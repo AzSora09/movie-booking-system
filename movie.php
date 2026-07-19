@@ -118,29 +118,38 @@ include("./logics/movie.php");
 
 
             <?php
+            // Display available schedules for the selected movie
             if (mysqli_num_rows($schedule_query) == 0) { ?>
 
                 <div class="alert alert-warning">
-                    No schedules available currently.
-                </div>
 
+                    No schedules are currently available for this movie.
+
+                </div>
 
             <?php } else { ?>
 
-
                 <div class="table-responsive">
 
-                    <table class="table table-striped">
+                    <table class="table table-dark table-hover align-middle">
 
-                        <!-- Table Header -->
+                        <!-- Table heading -->
                         <thead>
 
                             <tr>
+
                                 <th>Cinema</th>
+
                                 <th>Date</th>
+
                                 <th>Time</th>
-                                <th>Prices</th>
-                                <th></th>
+
+                                <th>Ticket Prices</th>
+
+                                <th class="text-center">
+                                    Booking
+                                </th>
+
                             </tr>
 
                         </thead>
@@ -148,71 +157,78 @@ include("./logics/movie.php");
 
                         <tbody>
 
-
                             <?php
-                            // Show available schedules for this movie
-                            while ($schedule = mysqli_fetch_assoc($schedule_query)) { ?>
-
+                            // Loop through available schedules
+                            while ($schedule = mysqli_fetch_assoc($schedule_query)) {
+                            ?>
 
                                 <tr>
 
                                     <td>
-                                        <?php
-                                        echo getvalue(
+
+                                        <?= getvalue(
                                             "cinemas",
                                             "name",
                                             $schedule["cinema_id"]
-                                        );
-                                        ?>
+                                        ); ?>
+
                                     </td>
 
 
                                     <td>
-                                        <?php echo $schedule["date"]; ?>
+
+                                        <?= $schedule["date"]; ?>
+
                                     </td>
 
 
                                     <td>
-                                        <?php echo $schedule["time"]; ?>
+
+                                        <?= $schedule["time"]; ?>
+
                                     </td>
 
 
                                     <td>
-                                        Box: <?php echo $schedule["box_price"]; ?>
+
+                                        <strong>Box:</strong>
+                                        Rs. <?= $schedule["box_price"]; ?>
+
                                         <br>
 
-                                        Gold: <?php echo $schedule["gold_price"]; ?>
+                                        <strong>Gold:</strong>
+                                        Rs. <?= $schedule["gold_price"]; ?>
+
                                         <br>
 
-                                        Platinum: <?php echo $schedule["platinum_price"]; ?>
+                                        <strong>Platinum:</strong>
+                                        Rs. <?= $schedule["platinum_price"]; ?>
+
                                     </td>
 
 
-                                    <td>
+                                    <td class="text-center">
 
+                                        <!-- Link to ticket booking page -->
                                         <a
-                                            href="./book.php?schedule=<?php echo $schedule["id"]; ?>"
+                                            href="./book.php?schedule=<?= $schedule["id"]; ?>"
                                             class="btn btn-danger">
 
-                                            Book
+                                            Book Now
 
                                         </a>
 
                                     </td>
 
-
                                 </tr>
 
-
                             <?php } ?>
-
 
                         </tbody>
 
                     </table>
 
                 </div>
-
 
             <?php } ?>
 

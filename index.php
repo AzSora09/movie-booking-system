@@ -20,100 +20,123 @@ include("./required.php");
 
 
     <main>
-        <div class="container my-5" style="min-height: 70vh;">
+
+        <div class="container my-5" style="min-height:70vh;">
 
 
-            <!-- Hero section containing website introduction and main navigation buttons -->
-            <div class="p-5 mb-5 bg-light rounded-3 text-center">
+            <!-- Hero section introducing the website -->
+            <div
+                class="text-center rounded-4 p-5 mb-5 shadow"
+                style="
+                background:linear-gradient(135deg,#4c1d95,#7c3aed);
+                color:white;
+            ">
 
-                <h1 class="display-5 fw-bold">
-                    Book Your Next Movie Experience
+                <h1 class="display-4 fw-bold mb-3">
+
+                    🎬 Welcome to ShowRadar
+
                 </h1>
 
 
-                <p class="lead">
-                    Browse the latest movies, discover cinemas, and book tickets in just a few clicks.
+                <p class="lead text-light mb-4">
+
+                    Discover the latest movies, explore nearby cinemas,
+                    and book your favourite seats in just a few clicks.
+
                 </p>
 
 
-                <!-- Buttons to navigate to movies and cinemas pages -->
-                <a href="./movies.php" class="btn btn-danger btn-lg me-2">
+                <!-- Hero navigation buttons -->
+                <a
+                    href="./movies.php"
+                    class="btn btn-light btn-lg me-3">
+
                     Browse Movies
+
                 </a>
 
 
-                <a href="./cinemas.php" class="btn btn-outline-danger btn-lg">
+                <a
+                    href="./cinemas.php"
+                    class="btn btn-outline-light btn-lg">
+
                     Browse Cinemas
+
                 </a>
 
             </div>
 
 
 
-            <!-- Section displaying a limited number of latest movies -->
-            <div class="d-flex justify-content-between align-items-center mb-3">
+            <!-- Latest movies section -->
+            <div class="d-flex justify-content-between align-items-center mb-4">
 
-                <h2>
+                <h2 class="fw-bold">
+
                     Now Showing
+
                 </h2>
 
+                <a
+                    href="./movies.php"
+                    class="btn btn-outline-danger">
 
-                <a href="./movies.php" class="btn btn-sm btn-outline-danger">
                     View All
+
                 </a>
 
             </div>
-
 
 
             <div class="row g-4 mb-5">
 
                 <?php
 
-                // Fetch latest movies to display on the homepage
+                // Fetch latest movies for the homepage
                 $movies = mysqli_query(
                     $conn,
                     "SELECT * FROM movies ORDER BY id DESC LIMIT 4"
                 );
 
-
-                // Loop through movies and create movie cards
                 while ($movie = mysqli_fetch_assoc($movies)) {
 
                 ?>
 
-                    <div class="col-md-3">
+                    <div class="col-lg-3 col-md-6">
 
-                        <div class="card h-100 shadow-sm">
-
+                        <div class="card h-100 shadow">
 
                             <img
                                 src="./images/<?= $movie["poster"] ?>"
                                 class="card-img-top"
-                                style="height:350px; object-fit:cover;">
-
+                                style="height:360px;object-fit:cover;">
 
 
                             <div class="card-body d-flex flex-column">
 
+                                <h5 class="fw-bold">
 
-                                <h5 class="card-title">
                                     <?= $movie["title"] ?>
+
                                 </h5>
 
 
-                                <p class="text-muted mb-1">
+                                <p class="text-secondary mb-1">
+
                                     <?= $movie["genre"] ?>
+
                                 </p>
 
 
-                                <p class="text-muted">
+                                <small class="text-secondary mb-3">
+
                                     <?= $movie["duration"] ?>
-                                </p>
+
+                                </small>
 
 
-
-                                <!-- Link to view complete movie information -->
+                                <!-- View movie details -->
                                 <a
                                     href="./movie.php?id=<?= $movie["id"] ?>"
                                     class="btn btn-danger mt-auto">
@@ -122,103 +145,93 @@ include("./required.php");
 
                                 </a>
 
-
                             </div>
-
 
                         </div>
 
-
                     </div>
 
-
                 <?php } ?>
-
 
             </div>
 
 
 
-            <!-- Section displaying a limited number of cinemas available on the website -->
-            <div class="d-flex justify-content-between align-items-center mb-3">
+            <!-- Featured cinemas section -->
+            <div class="d-flex justify-content-between align-items-center mb-4">
 
-                <h2>
+                <h2 class="fw-bold">
+
                     Our Cinemas
+
                 </h2>
 
+                <a
+                    href="./cinemas.php"
+                    class="btn btn-outline-danger">
 
-                <a href="./cinemas.php" class="btn btn-sm btn-outline-danger">
                     View All
+
                 </a>
 
             </div>
 
 
-
             <div class="row g-4">
-
 
                 <?php
 
-                // Fetch cinemas to display on the homepage
+                // Fetch cinemas for homepage
                 $cinemas = mysqli_query(
                     $conn,
                     "SELECT * FROM cinemas LIMIT 4"
                 );
 
-
-                // Loop through cinemas and create cinema cards
                 while ($cinema = mysqli_fetch_assoc($cinemas)) {
 
                 ?>
 
+                    <div class="col-lg-3 col-md-6">
 
-                    <div class="col-md-3">
+                        <div class="card h-100 shadow">
 
+                            <div class="card-body d-flex flex-column">
 
-                        <div class="card h-100 shadow-sm">
+                                <h4 class="fw-bold">
 
+                                    <?= $cinema["name"] ?>
 
-                            <div class="card-body">
-
-
-                                <h4>
-                                    <?php echo $cinema["name"]; ?>
                                 </h4>
 
 
-                                <p class="text-muted">
-                                    <?php echo $cinema["location"]; ?>
+                                <p class="text-secondary flex-grow-1">
+
+                                    📍 <?= $cinema["location"] ?>
+
                                 </p>
 
 
-
-                                <!-- Link to view movies available in the selected cinema -->
+                                <!-- View cinema page -->
                                 <a
-                                    href="./cinema.php?id=<?php echo $cinema["id"]; ?>"
+                                    href="./cinema.php?id=<?= $cinema["id"] ?>"
                                     class="btn btn-outline-danger">
 
                                     View Movies
 
                                 </a>
 
-
                             </div>
-
 
                         </div>
 
-
                     </div>
-
 
                 <?php } ?>
 
-
             </div>
 
-
         </div>
+
     </main>
 
 
